@@ -1,4 +1,7 @@
 const app = require('./app');
 
-app.listen(3000);
-console.log("server on port ", 3000);
+app.listen(app.get('port'));
+//enviroment variables
+
+
+console.log("server on port ", app.get('port'));
