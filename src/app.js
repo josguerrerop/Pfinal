@@ -6,6 +6,7 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(morgan('dev'));
 
-app.use("/app", require('./routes/employes'));
+app.use("/app/employees", require('./routes/employes'));
+
 
 module.exports = app;

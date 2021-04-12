@@ -1,19 +1,25 @@
 const employe = {}
 
-employe.getAnything = (req, res) => {
-    res.send('Andrea');
+employe.getEmployees = (req, res) => {
+    res.send('john');
 }
 
-employe.CreateAnything = (req, res) => {
+employe.createEmployee = (req, res) => {
+    res.send('john');
+}
+
+employe.getEmployee = (req, res) => {
 
 }
 
-employe.DeleteAnything = (req, res) => {
+employe.editEmployee = (req, res) => {
 
 }
 
-employe.UpdateAnything = (req, res) => {
+employe.deleteEmployee = (req, res) => {
 
 }
+
+
 
 module.exports = employe;
