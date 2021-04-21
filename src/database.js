@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/final', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         // useCreateIndex: true,
-        //useFindAndModify: false
+        useFindAndModify: false
     })
     .then((db) => console.log("db is connected"))
     .catch((err) => console.error(err));

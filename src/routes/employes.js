@@ -7,7 +7,7 @@ const router = Router();
 router.get('/', emp.getEmployees);
 router.post('/', emp.createEmployee);
 router.get('/:id', emp.getEmployee);
-router.get('/:id', emp.editEmployee);
-router.get('/:id', emp.deleteEmployee);
+router.put('/:id', emp.editEmployee);
+router.delete('/:id', emp.deleteEmployee);
 
 module.exports = router;

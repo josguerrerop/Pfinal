@@ -12,21 +12,24 @@ employe.getEmployees = async(req, res) => {
 
 employe.createEmployee = async(req, res) => {
     const newOne = new Employee(req.body);
-    //console.log(newOne);
     await newOne.save();
     res.send({ message: 'Employee Created' });
 }
 
-employe.getEmployee = (req, res) => {
-
+employe.getEmployee = async(req, res) => {
+    console.log(req.params);
+    const employe = await Employee.findById(req.params.id);
+    res.send(employe);
 }
 
-employe.editEmployee = (req, res) => {
-
+employe.editEmployee = async(req, res) => {
+    await Employee.findByIdAndUpdate(req.params.id, req.body)
+    res.json({ status: 'Employee Updated' })
 }
 
-employe.deleteEmployee = (req, res) => {
-
+employe.deleteEmployee = async(req, res) => {
+    await Employee.findByIdAndDelete(req.params.id);
+    res.json({ status: 'Employe Delete' });
 }
 
 module.exports = employe;
