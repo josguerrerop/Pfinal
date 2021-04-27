@@ -1,26 +1,35 @@
+addpath('/home/john/Documentos/final/jsonlab');
+format shortg;
 %% Algoritmo genetico
 clear
 clc
 warning off
 %% Cargar datos de entrada
 Caso=loadcase(caso5);
+%savejson('',Caso,'informacion.json');
 %% Generar poblacion inicial
  % Caso 5
 Tam=10;
 Recursos=300;
 Ataque_Lineas=[50 50 50 50 50 50];
 Ataque_Generadores=[100 100 100 100 100];
+array={Tam Recursos Ataque_Lineas Ataque_Generadores};
+%savejson('',array,'generarP.json');
 %% Caso 24
 % Tam=50;
 % Recursos=800;
-% Ataque_Lineas(1:38)=50;
-% Ataque_Generadores(1:33)=100;
+%Ataque_Lineas(1:38)=50;
+%savejson('',Ataque_Lineas,'generarP.json');
+
 %%
 Pc=0.8;
 Pm=0.1;
 Costo_ataque=[Ataque_Lineas,Ataque_Generadores];
 Nc=length(Costo_ataque);
 Poblacion_Inicial = Generar_Poblacion(Tam,Nc,Recursos,Costo_ataque);
+
+array2={Pc Pm Costo_ataque Nc Poblacion_Inicial};
+savejson('',Poblacion_Inicial,'Documento2.json');
 %% Calcular funcion de adaptacion
 Costo=zeros(Tam,1);
 for i=1:Tam
@@ -31,6 +40,7 @@ Poblacion_Interdiccion_=[Poblacion_Inicial,Costo];
 Poblacion_Interdiccion_= sortrows(Poblacion_Interdiccion_,Nc+1);
 %% Seleccion
 % Selección
+
 itermax=1000;
 Costo_Hijos=0;
 Costo_Hijo1=0;
@@ -124,4 +134,5 @@ fprintf('Iteración %d, Función Objetivo %2.5f, contador %2.5f \n',t,Poblacion_
 end
 Vector_Interdiccion=Poblacion_Interdiccion(i,:);
 [Solucion,Costo_total]= Flujo_Optimo(Vector_Interdiccion,Caso);
+
 
