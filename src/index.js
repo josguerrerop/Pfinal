@@ -41,10 +41,6 @@ io.on('connection', function(socket) {
                         console.log(savedData);
                     });
                     
-                  
-
-
-
 
                 } catch (e) {
                     console.log('malformed data');
