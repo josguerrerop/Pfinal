@@ -2,7 +2,20 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h1>Formulario</h1>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter your name">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter your position">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
@@ -17,6 +30,21 @@
                     <th>Operation</th>
                 </tr>
             </thead>
+            <tbody>
+                <tr *ngFor="let employee of employeService.employees">
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.position}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="btn btn-danger btn-sm">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

@@ -2,7 +2,6 @@ require('./database')
 const app = require('./app');
 const server = app.listen(app.get('port'));
 //enviroment variables
-
 //https://stackoverflow.com/questions/34829490/socket-io-io-use-fails-typeerror-io-use-is-not-a-function
 console.log("server on port ", app.get('port'));
 

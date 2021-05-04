@@ -9,10 +9,10 @@ export class EmployeeService {
 
   URL_API = 'http://localhost:3000/app/employees';
 
-  //employees: Employee[];
+  employees: Employee[] = [];
 
   getEMployees(){
-return this.http.get(this.URL_API); 
+return this.http.get<Employee[]>(this.URL_API); 
   }
 
   constructor(private http: HttpClient) { }

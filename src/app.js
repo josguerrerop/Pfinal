@@ -13,5 +13,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/app/employees", require('./routes/employes'));
 
-
 module.exports = app;
