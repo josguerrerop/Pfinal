@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from '../../services/employee.service';
+import {NgForm} from '@angular/forms'
 
 @Component({
   selector: 'app-employee',
@@ -17,8 +18,38 @@ export class EmployeeComponent implements OnInit {
   getEmployes(){
     this.employeService.getEMployees().subscribe(
       res => {this.employeService.employees= res},
-      err => console.log(err)
+    err => console.log(err)
     )
   }
 
+  addEmployee(form: NgForm){
+  this.employeService.createEmployee(form.value).subscribe(
+  res => {
+  this.getEmployes();
+  form.reset();
+  },
+  err => console.log(err)
+  )
+  }
+
+  
+ 
+  deleteEmployee(_id: string | undefined) {
+    console.log(_id)
+    if (confirm("Are you sure you want to delete it?")) {
+   this.employeService.deleteEmploye(_id);
+   this.getEmployes();
+        
+    }
+  }
+
+  resetForm(form?: NgForm) {
+    if (form) {
+      form.reset();
+      //this.employeeService.selectedEmployee = new Employee();
+    }
+  }
 }
+
+
+
