@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from '../../services/employee.service';
 import {NgForm} from '@angular/forms'
+import { Employee } from "../../models/employee";
 
 @Component({
   selector: 'app-employee',
@@ -48,6 +49,10 @@ export class EmployeeComponent implements OnInit {
       form.reset();
       //this.employeeService.selectedEmployee = new Employee();
     }
+  }
+
+  editEmployee(employee: Employee){
+  this.employeService.selectedEmployee = employee;
   }
 }
 

@@ -3,6 +3,8 @@
         <div class="card">
             <div class="card-body">
                 <form #employeeForm="ngForm" (ngSubmit)="addEmployee(employeeForm)">
+
+
                     <div class="form-group">
                         <input type="text" class="form-control" name="name" placeholder="Enter your name" [(ngModel)]="employeService.selectedEmployee.name">
 
@@ -19,7 +21,7 @@
                     <div class="form-group">
                         <input type="number" class="form-control" name="salary" placeholder="Enter your salary" [(ngModel)]="employeService.selectedEmployee.salary">
                     </div>
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" (click)="resetForm(employeeForm)">
                         clear
                     </button>
                     <button class="btn btn-secondary">
@@ -46,7 +48,7 @@
                     <td>{{employee.position}}</td>
                     <td>{{employee.salary}}</td>
                     <td>
-                        <button class="btn btn-secondary btn-sm">
+                        <button class="btn btn-secondary btn-sm" (click)="editEmployee(employee)">
                             <i class="material-icons">edit</i>
                         </button>
                         <button class="btn btn-danger btn-sm" (click)="deleteEmployee(employee._id)">

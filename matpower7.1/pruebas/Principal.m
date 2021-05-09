@@ -9,11 +9,11 @@ Caso=loadcase(caso5);
 %savejson('',Caso,'informacion.json');
 %% Generar poblacion inicial
  % Caso 5
-Tam=10;
-Recursos=300;
+Tam=10;%de toda la poblacion saca 10 individuos : linea 
+Recursos=300;%dinero que tiene el atacante 
 Ataque_Lineas=[50 50 50 50 50 50];
 Ataque_Generadores=[100 100 100 100 100];
-array={Tam Recursos Ataque_Lineas Ataque_Generadores};
+
 %savejson('',array,'generarP.json');
 %% Caso 24
 % Tam=50;
@@ -22,26 +22,33 @@ array={Tam Recursos Ataque_Lineas Ataque_Generadores};
 %savejson('',Ataque_Lineas,'generarP.json');
 
 %%
-Pc=0.8;
-Pm=0.1;
+Pc=0.8;%umbral
+Pm=0.1;%umbral
+
 Costo_ataque=[Ataque_Lineas,Ataque_Generadores];
+
 Nc=length(Costo_ataque);
+
+
 Poblacion_Inicial = Generar_Poblacion(Tam,Nc,Recursos,Costo_ataque);
 
-array2={Pc Pm Costo_ataque Nc Poblacion_Inicial};
-savejson('',Poblacion_Inicial,'Documento2.json');
+
+%array={Tam Recursos Ataque_Lineas Ataque_Generadores,Pc,Pm,Poblacion_Inicial ,Nc};
+
+
+%savejson('',array,'variables.json');
 %% Calcular funcion de adaptacion
 Costo=zeros(Tam,1);
 for i=1:Tam
     Vector_Interdiccion(:)=Poblacion_Inicial(i,:);
     [~,Costo(i),~]= Flujo_Optimo(Vector_Interdiccion,Caso);
 end
-Poblacion_Interdiccion_=[Poblacion_Inicial,Costo];
-Poblacion_Interdiccion_= sortrows(Poblacion_Interdiccion_,Nc+1);
-%% Seleccion
+Poblacion_Interdiccion=[Poblacion_Inicial,Costo];
+Poblacion_Interdiccion_= sortrows(Poblacion_Interdiccion,Nc+1);
+%% Seleccion_,Nc+1);
 % Selección
 
-itermax=1000;
+itermax=10;
 Costo_Hijos=0;
 Costo_Hijo1=0;
 Costo_Hijo2=0;
@@ -135,4 +142,9 @@ end
 Vector_Interdiccion=Poblacion_Interdiccion(i,:);
 [Solucion,Costo_total]= Flujo_Optimo(Vector_Interdiccion,Caso);
 
+sol = Solucion{1,1}.bus;
+
+%a = extractfield(sol,'bus'); 
+
+%savejson('',Solucion.RD,'variables.json');
 
