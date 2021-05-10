@@ -3,7 +3,14 @@
   const server = app.listen(app.get('port'));
   const fs = require('fs');
   const { watch } = require('gulp');
-  const io = require('socket.io')(server);
+  const io = require('socket.io')(server, {
+      cors: {
+          origin: "http://localhost:4200",
+          methods: ["GET", "POST"],
+          allowedHeaders: ["my-custom-header"],
+          credentials: true
+      }
+  });
 
   console.log("server on port ", app.get('port'));
 
@@ -23,5 +30,6 @@
 
 
   io.on('connection', function(socket) {
-      socket.emit("hola");
+      console.log('new client')
+      socket.emit('test event', ' data');
   });
