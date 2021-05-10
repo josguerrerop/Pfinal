@@ -20,16 +20,12 @@
   const watcher = watch([k]);
 
 
-  /*
-    watcher.on('change', () => {
-        const data = fs.readFileSync(k, { encoding: 'utf8', flag: 'r' });
-        x = JSON.parse(data);
-    });
-  */
-
-
 
   io.on('connection', function(socket) {
       console.log('new client')
-      socket.emit('test event', ' data');
+      watcher.on('change', () => {
+          const data = fs.readFileSync(k, { encoding: 'utf8', flag: 'r' });
+          x = JSON.parse(data);
+          socket.emit('test event', x);
+      });
   });

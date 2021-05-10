@@ -9,10 +9,12 @@ import {SocketioService} from '../../services/socketio.service';
 export class SocketIoComponent implements OnInit {
 
   constructor(public socket : SocketioService) { }
+  arr:any;
 
   ngOnInit(): void {
     this.socket.listen('test event').subscribe((data)=>{
       console.log(data);
+      this.arr=data;
     })
   }
 
