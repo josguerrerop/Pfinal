@@ -33,7 +33,7 @@ Nc=length(Costo_ataque);
 Poblacion_Inicial = Generar_Poblacion(Tam,Nc,Recursos,Costo_ataque);
 
 
-%array={Tam Recursos Ataque_Lineas Ataque_Generadores,Pc,Pm,Poblacion_Inicial ,Nc};
+array={Tam Recursos Ataque_Lineas Ataque_Generadores,Pc,Pm,Poblacion_Inicial ,Nc};
 
 
 %savejson('',array,'variables.json');
@@ -44,11 +44,18 @@ for i=1:Tam
     [~,Costo(i),~]= Flujo_Optimo(Vector_Interdiccion,Caso);
 end
 Poblacion_Interdiccion=[Poblacion_Inicial,Costo];
+
 Poblacion_Interdiccion_= sortrows(Poblacion_Interdiccion,Nc+1);
+
+
+savejson('',Vector_Interdiccion,'V.json');
+
+savejson('',Poblacion_Interdiccion_,'Pinterdiccion.json');
+
 %% Seleccion_,Nc+1);
 % Selección
 
-itermax=10;
+itermax=20;
 Costo_Hijos=0;
 Costo_Hijo1=0;
 Costo_Hijo2=0;
@@ -64,7 +71,7 @@ while contador<itermax
         Penalizacion_Hijo2=0; 
       while cumple==0 || Penalizacion_Hijo1~=0 || Penalizacion_Hijo2~=0 
         Tor = unique(randi([1 Tam],1,2));
-        while (size(Tor,2) == 1) 
+         while (size(Tor,2) == 1)
            Tor = unique(randi([1 Tam],1,2));
         end
         Padre1 = Poblacion_Interdiccion(Tor(1),:);
@@ -116,6 +123,10 @@ Registro_Hijos=zeros(2,1);
 for i=1:2
     Vector_Interdiccion(:)=Hijos(i,:);
     [~,Costo,~]= Flujo_Optimo(Vector_Interdiccion,Caso);
+    
+    savejson('',Vector_Interdiccion,'V.json');
+
+    
     Costo_total_Hijos(i)=Costo;
 end
  Poblacion_Hijos_Interdiccion_=[Hijos,Costo_total_Hijos];
@@ -135,11 +146,20 @@ end
  if Ganador(end)>Poblacion_Interdiccion_(end,end) && bandera==0   
     contador=0;
  end 
-Poblacion_Interdiccion_= sortrows(Poblacion_Interdiccion_,Nc+1);
+
+
 Poblacion_Interdiccion=Poblacion_Interdiccion_(:,1:Nc);
+Poblacion_Interdiccion_= sortrows(Poblacion_Interdiccion_,Nc+1);
+savejson('',Poblacion_Interdiccion_,'Pinterdiccion.json');
+
 fprintf('Iteración %d, Función Objetivo %2.5f, contador %2.5f \n',t,Poblacion_Interdiccion_(end,end),contador);
 end
 Vector_Interdiccion=Poblacion_Interdiccion(i,:);
+
+savejson('',Vector_Interdiccion,'V.json');
+
+
+
 [Solucion,Costo_total]= Flujo_Optimo(Vector_Interdiccion,Caso);
 
 sol = Solucion{1,1}.bus;

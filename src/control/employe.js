@@ -2,11 +2,12 @@ const employe = {}
 const Employee = require('../models/employe')
 const Prueba = require('../models/prueba');
 const fs = require('fs');
+Prueba.deleteMany().exec();
+
 
 employe.getEmployees = async(req, res) => {
     try {
         const k = './matpower7.1/pruebas/JSON/Documento2.json'
-        Prueba.deleteMany().exec();
         const data = fs.readFileSync(k, { encoding: 'utf8', flag: 'r' });
         x = JSON.parse(data);
         await new Prueba({ x }).save();

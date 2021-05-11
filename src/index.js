@@ -26,6 +26,8 @@
       watcher.on('change', () => {
           const data = fs.readFileSync(k, { encoding: 'utf8', flag: 'r' });
           x = JSON.parse(data);
+
+          console.log(x);
           socket.emit('test event', x);
       });
   });
