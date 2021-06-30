@@ -16,7 +16,7 @@ export class EmployeeService {
     name : '',
     office: '',
     position: '',
-    salary: 1,
+    salary: 0,
     
   };
 
