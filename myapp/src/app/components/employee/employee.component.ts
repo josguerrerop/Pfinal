@@ -13,15 +13,22 @@ export class EmployeeComponent implements OnInit {
   constructor(public employeService: EmployeeService) { }
 
   ngOnInit(): void {
-  this.getEmployes();
-  }
 
-  getEmployes(){
+  }
+  
+  Execute():void{
     this.employeService.getEMployees().subscribe(
-      res => {this.employeService.employees= res},
-    err => console.log(err)
+      res => {
+        this.employeService.data=res
+        this.employeService.saving();  
+      }
     )
   }
+}
+
+
+/*
+  
 
   addEmployee(form: NgForm){
   this.employeService.createEmployee(form.value).subscribe(
@@ -56,5 +63,6 @@ export class EmployeeComponent implements OnInit {
   }
 }
 
+*/
 
 

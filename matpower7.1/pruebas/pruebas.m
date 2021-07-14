@@ -1,2 +1,2 @@
-Tam=10;
-pruebaTor = unique(randi([1 Tam]),1,2);
+function out= pruebas(in)
+out = magic(in);

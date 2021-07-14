@@ -12,10 +12,12 @@ export class SocketIoComponent implements OnInit {
   arr:any;
 
   ngOnInit(): void {
+    /*
     this.socket.listen('test event').subscribe((data)=>{
       console.log(data);
       this.arr=data;
     })
+    */
   }
 
 }
