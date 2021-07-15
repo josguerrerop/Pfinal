@@ -3,6 +3,9 @@ import {EmployeeService} from '../../services/employee.service';
 import {NgForm} from '@angular/forms'
 import { Employee } from "../../models/employee";
 
+import { Router , ActivatedRoute } from '@angular/router';
+
+
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -10,11 +13,17 @@ import { Employee } from "../../models/employee";
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor(public employeService: EmployeeService) { }
+  constructor(public employeService: EmployeeService , public act: ActivatedRoute) { }
 
   ngOnInit(): void {
+<<<<<<< HEAD
 console.log('x')
+=======
+   console.log('hola')
+>>>>>>> e5bb85c91af2600905b23c12b0ca45a150a2c1ad
   }
+
+  
   
   Execute():void{
     this.employeService.getEMployees().subscribe(

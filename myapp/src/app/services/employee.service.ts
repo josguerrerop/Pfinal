@@ -10,6 +10,10 @@ export class EmployeeService {
   URL_API = "http://localhost:9911/pruebas/pruebas";
 
   URL_NJS = "http://localhost:3000";
+
+  xd(){
+    console.log('d')
+  }
   
   saving() {
     return this.http.post(this.URL_NJS,this.data);
