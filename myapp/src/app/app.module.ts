@@ -5,17 +5,20 @@ import { AppComponent } from './app.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import {FormsModule} from '@angular/forms';
 import { SocketIoComponent } from './components/socket-io/socket-io.component'
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent,
-    SocketIoComponent
+    //EmployeeComponent,
+    //SocketIoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

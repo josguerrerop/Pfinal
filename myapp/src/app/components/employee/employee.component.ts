@@ -13,7 +13,7 @@ export class EmployeeComponent implements OnInit {
   constructor(public employeService: EmployeeService) { }
 
   ngOnInit(): void {
-
+console.log('x')
   }
   
   Execute():void{
