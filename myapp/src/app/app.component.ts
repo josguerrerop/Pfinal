@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+//import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faGofore } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,9 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   title = 'myapp';
-  faCoffee = faCoffee;
+  //faCoffee = faCoffee;
+  faGofore=faGofore;
+
+ titulo = 'estión de Vulnerabilidad';
+
 }

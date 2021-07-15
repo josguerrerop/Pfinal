@@ -1,0 +1,12 @@
+
+
+  :host ::ng-deep .move{
+    padding-left:70px;
+    padding-top: 13px;
+    font-family: "Times New Roman", Times, serif;
+    
+}
+
+:host ::ng-deep .navbar {
+    height: 43px;
+  }
