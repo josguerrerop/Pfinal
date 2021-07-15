@@ -5,6 +5,7 @@ import  {io} from 'socket.io-client';
   providedIn: 'root'
 })
 export class SocketioService {
+  /*
 socket: any;
 readonly URL = 'ws://localhost:3000';
   constructor() {
@@ -26,4 +27,5 @@ readonly URL = 'ws://localhost:3000';
 emit(eventName:string, data:any){
   this.socket.emit(eventName,data);
 }
+*/
 }
