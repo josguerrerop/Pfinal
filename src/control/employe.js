@@ -1,11 +1,14 @@
 const employe = {}
-const Employee = require('../models/employe')
-const Prueba = require('../models/prueba');
+//const Employee = require('../models/employe')
+//const Prueba = require('../models/prueba');
 const fs = require('fs');
-Prueba.deleteMany().exec();
+//Prueba.deleteMany().exec();
 
 
 employe.getEmployees = async(req, res) => {
+    console.log('Hola');
+    res.send('hola')
+    /*
     try {
         const k = './matpower7.1/pruebas/JSON/Documento2.json'
         const data = fs.readFileSync(k, { encoding: 'utf8', flag: 'r' });
@@ -16,6 +19,7 @@ employe.getEmployees = async(req, res) => {
     } catch (error) {
         console.error(error);
     }
+    */
 }
 
 employe.createEmployee = async(req, res) => {
