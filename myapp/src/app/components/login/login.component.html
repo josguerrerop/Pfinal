@@ -1,14 +1,36 @@
 
-  <!--<div class="container" style="max-width: 550px">
-    <h2 class="text-center mb-5">Angular Login with Google</h2>
-  
-    <div *ngIf="loggedIn === false">
+  <div class="card mx-auto" style="width: 18rem;">
+    <div class="card-body">
+      <div class="google-btn" (click)="loginWithGoogle()">
+        <div class="google-icon-wrapper">
+          <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+        </div>
+        <p class="btn-text"><b>Iniciar sesión con Google</b></p>
+    </div>
+    </div>
+  </div>
+
+
+ 
+
+
+
+   
+
+
+
+     <!--
+      
+      <div *ngIf="loggedIn === false">
       <div>
-        <button type="button" (click)="loginWithGoogle()" class="btn btn-danger">Login with Google</button>
+        <button type="button" (click)="loginWithGoogle()" class="btn btn-danger">
+          <fa-icon [icon]="faGooglePlusG"></fa-icon>
+          Iniciar Sesión con google</button>
       </div>
     </div>
-  
-    <div *ngIf="loggedIn === true">
+      
+      
+      <div *ngIf="loggedIn === true">
       <div class="form-group">
         <label>First Name</label>
         <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
@@ -23,5 +45,5 @@
       </div>
   
       <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
-    </div>
-  </div>-->
+    </div>-->
+    

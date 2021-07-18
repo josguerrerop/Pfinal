@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'myapp';
   //faCoffee = faCoffee;
   faGofore=faGofore;
-
+  
  titulo = 'estión de Vulnerabilidad';
 
 }
