@@ -1,13 +1,36 @@
 const employe = {}
-//const Employee = require('../models/employe')
-//const Prueba = require('../models/prueba');
+const Operador = require('../models/operador')
 const fs = require('fs');
 //Prueba.deleteMany().exec();
 
 
 employe.getEmployees = async(req, res) => {
-    console.log('Hola');
-    res.send('hola')
+    console.log(req.body)
+    res.json({status:200})
+/*
+    let x = {
+    email: 'josguerrerop@correo.udistrital.edu.co'
+}
+const operador = new Operador({x});
+
+const employee = await Employee.findByOne({email:req.body.email},(err,user)=>{
+    if(err){
+console.log(err)
+    }
+    if(user){
+       res.json({success:true, status:200})
+    }else{
+        res.json({success:false, status:404})
+    }
+});
+*/
+}
+
+
+
+
+
+
     /*
     try {
         const k = './matpower7.1/pruebas/JSON/Documento2.json'
@@ -20,7 +43,7 @@ employe.getEmployees = async(req, res) => {
         console.error(error);
     }
     */
-}
+
 
 employe.createEmployee = async(req, res) => {
     const newOne = new Employee(req.body);
