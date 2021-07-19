@@ -7,6 +7,7 @@ const fs = require('fs');
 employe.getEmployees = async(req, res) => {
     console.log(req.body)
     res.json({status:200})
+}
 /*
     let x = {
     email: 'josguerrerop@correo.udistrital.edu.co'
@@ -24,7 +25,7 @@ console.log(err)
     }
 });
 */
-}
+//}
 
 
 

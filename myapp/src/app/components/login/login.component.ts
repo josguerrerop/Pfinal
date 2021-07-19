@@ -9,22 +9,16 @@ import { GoogleService } from 'src/app/services/google.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-   //loginForm!: FormGroup;
-   loggedIn: boolean = false ;
-   socialUser: SocialUser = new SocialUser;
-   
-   
-
+    loggedIn: boolean =false;
+    socialUser: SocialUser = new SocialUser;
 
   constructor( private authService: SocialAuthService, private dataService:GoogleService ) {
-
-   }
+    
+  }
 
    refreshToken(): void {
     this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
-
   loginWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
@@ -39,13 +33,9 @@ export class LoginComponent implements OnInit {
       )
     });  
   }
-
   logOut(): void {
     this.authService.signOut();
   }
-
   ngOnInit(): void { 
-      
   }
-
 }
