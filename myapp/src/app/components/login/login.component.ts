@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       this.socialUser = user;
       this.loggedIn = (user != null);
     });    
-    
   }
 
 }

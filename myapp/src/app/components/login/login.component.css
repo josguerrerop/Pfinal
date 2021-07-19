@@ -3,7 +3,7 @@
 .google-btn {
   width: 230px;
   height: 42px;
-  background-color: #4671bb;
+  background-color: #e93d3d;
   border-radius: 2px;
   box-shadow: 0 3px 4px 0 rgba(23, 26, 221, 0.25);
 }
@@ -32,8 +32,8 @@
   font-family: "Roboto";
 }
 .google-btn:hover {
-  box-shadow: 0 0 6px #2908bd;
+  box-shadow: 0 0 6px #cc3c31;
 }
 .google-btn:active {
-  background: #090cb9;
+  background: #cc3c31;
 }
