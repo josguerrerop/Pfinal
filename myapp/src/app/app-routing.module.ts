@@ -2,12 +2,14 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmployeeComponent } from './components/employee/employee.component'; 
+//import { EmployeeComponent } from './components/employee/employee.component'; 
 
-const routes: Routes = [
-  {path: 'x', component: EmployeeComponent },
-  {path: '**',loadChildren: () => import('./admin/admin-routing.module')}
-];
+const routes: Routes = [{
+  path: '',loadChildren: () => import('./admin/admin.module').then(m=>m.AdminModule),
+},
+{
+  path:'**',loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule),
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

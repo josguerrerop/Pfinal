@@ -13,7 +13,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SideNavComponent } from './layout/side-nav-left/side-nav/side-nav.component';
 import { SideNavClosedComponent } from './layout/side-nav-left/side-nav-closed/side-nav-closed.component';
-
+import {MatCardModule} from '@angular/material/card'
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -32,7 +32,9 @@ import { SideNavClosedComponent } from './layout/side-nav-left/side-nav-closed/s
     MatToolbarModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatCardModule
   ]
 })
 export class AdminModule { }
