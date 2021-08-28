@@ -1,0 +1,27 @@
+mat-sidenav-container {
+    height:100vh !important; 
+    border: none;
+    width: 100vh;
+}
+
+mat-sidenav{
+    width: 250px;
+    z-index: 1000;
+  }
+  
+
+mat-toolbar {
+    border: none;
+  position: fixed;
+  display:flex;
+  align-items: center;
+  justify-content: none;
+  height: 3.9rem;
+  width: 90%;
+  background-color: rgb(53, 53, 53);
+  font-family: Lato;
+  color:white;
+}
+.item {
+    background-color: rgb(241, 241, 241);
+}

@@ -11,14 +11,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MaterialCssVarsModule,MaterialCssVarsService} from 'angular-material-css-vars';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    //EmployeeComponent,
-    //SocketIoComponent
   ],
   imports: [
     BrowserModule,
@@ -28,11 +25,6 @@ import {MaterialCssVarsModule,MaterialCssVarsService} from 'angular-material-css
     AppRoutingModule,
     SocialLoginModule,
     BrowserAnimationsModule,
-    MaterialCssVarsModule.forRoot({
-      isAutoContrast:true,
-      darkThemeClass:'isDarkTheme',
-      lightThemeClass:'isLightTheme'
-    })
   ],
   providers: [
     {
@@ -48,8 +40,7 @@ import {MaterialCssVarsModule,MaterialCssVarsService} from 'angular-material-css
           }
         ]
       } as SocialAuthServiceConfig,
-    },
-    MaterialCssVarsService
+    }
   ],
   bootstrap: [AppComponent]
 })
