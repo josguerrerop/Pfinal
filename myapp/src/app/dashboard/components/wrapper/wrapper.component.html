@@ -7,13 +7,13 @@
     <mat-icon mat-list-icon class="">home</mat-icon>
    </mat-list-item>
 
-   <mat-list-item>
+   <mat-list-item [routerLink]="'dashboard'">
     <mat-icon mat-list-icon class="">bar_chart</mat-icon>
     <span>Reportes</span>
    </mat-list-item>
 
 
-   <mat-list-item>
+   <mat-list-item [routerLink]="'info'">
     <mat-icon mat-list-icon class="">blur_on</mat-icon>
     <span>Algoritmo genético</span>
    </mat-list-item>
@@ -34,13 +34,20 @@
 </mat-sidenav>
 
 
-    <mat-toolbar  >
+    <mat-toolbar>
         Gestión de vulnerabilidad
     </mat-toolbar>
+    
     <router-outlet></router-outlet>
+    
+  </mat-sidenav-container>
+
+    
+   
+    
 
 
-</mat-sidenav-container>
+
 
 
   

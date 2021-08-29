@@ -24,6 +24,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatIconModule,
     MatListModule,
     MatToolbarModule
-  ]
+  ],
+  providers:[]
 })
 export class DashboardModule { }
