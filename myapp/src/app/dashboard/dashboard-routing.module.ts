@@ -4,12 +4,16 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InfoComponent } from './components/info/info.component';
 import { UserComponent } from './components/user/user.component';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
-
+import {HomeComponent} from './components/home/home.component'
 const routes: Routes = [
 {
   path: '',
   component: WrapperComponent,
   children: [
+    {
+      path:'home',
+      component:HomeComponent
+    },
     {
       path:'dashboard',
       component:DashboardComponent

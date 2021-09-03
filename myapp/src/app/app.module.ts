@@ -9,14 +9,12 @@ import {GoogleLoginProvider,} from 'angularx-social-login';
 import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
+//import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +41,6 @@ import { DashboardComponent } from './dashboard/components/dashboard/dashboard.c
       } as SocialAuthServiceConfig,
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
