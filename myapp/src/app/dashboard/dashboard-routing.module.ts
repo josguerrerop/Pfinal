@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { InfoComponent } from './components/info/info.component';
-import { UserComponent } from './components/user/user.component';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
 import {HomeComponent} from './components/home/home.component'
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { AlgoritmoComponent } from './components/algoritmo/algoritmo.component';
+import { FlujoComponent } from './components/flujo/flujo.component';
+
 const routes: Routes = [
 {
   path: '',
@@ -15,16 +16,16 @@ const routes: Routes = [
       component:HomeComponent
     },
     {
-      path:'dashboard',
-      component:DashboardComponent
+      path:'reportes',
+      component:ReportesComponent
     },
     {
-      path:'info',
-      component:InfoComponent
+      path:'Algoritmo',
+      component:AlgoritmoComponent
     },
     {
-      path:'user',
-      component:UserComponent
+      path:'flujo',
+      component:FlujoComponent
     }
   ]
 }
