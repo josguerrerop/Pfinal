@@ -6,7 +6,7 @@ import {HttpClient } from '@angular/common/http'
 })
 export class EmployeeService {
   data: any;
-  URL_API = "http://localhost:9911/pruebas/pruebas";
+  URL_API = "http://localhost:9910/prueba/prueba";
 
   URL_NJS = "http://localhost:3000";
 

@@ -7,6 +7,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select'
+import {MatFormFieldModule} from '@angular/material/form-field'
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
@@ -24,6 +26,8 @@ import { FlujoComponent } from './components/flujo/flujo.component';
     FlujoComponent,
   ],
   imports: [
+    MatSelectModule,
+    MatFormFieldModule,
     CommonModule,
     DashboardRoutingModule,
     MatSidenavModule,
