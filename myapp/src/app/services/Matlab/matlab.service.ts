@@ -13,8 +13,8 @@ export class MatlabService {
 
   SelectCase(caso:string){
     return this.http.post(this.URL_CARACTERISTICAS,{ "nargout": 5,
-    "rhs": "cinco",
-    "outputFormat":{ "mode" : "large", "nanInfFormat" : "string" }
+    "rhs": [caso],
+    "outputFormat":{ "mode" : "small", "nanInfFormat" : "string" }
     
      }); 
     }

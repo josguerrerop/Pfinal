@@ -8,12 +8,13 @@ import { MatlabService } from 'src/app/services/Matlab/matlab.service';
 })
 export class AlgoritmoComponent implements OnInit {
    data:any;
+
    caso =[
      {val:'Cinco'},
      {val:'Veinticuatro'}
    ];
 
-   selected: string='';
+   arr:Array<Number[]>=[];
 
   constructor(private matlabService:MatlabService) { }
 
@@ -26,7 +27,8 @@ export class AlgoritmoComponent implements OnInit {
     this.matlabService.SelectCase("cinco").subscribe(
       res => {
         this.data=res;
-        console.log(this.data);
+        this.arr=this.data.lhs[0].branch;
+        console.log(this.arr);
       }
     );
     

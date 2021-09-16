@@ -8,3 +8,23 @@
   </mat-option>
  </mat-select>
 </mat-form-field>
+
+<mat-expansion-panel>
+<mat-expansion-panel-header>
+    <mat-panel-title>
+        Caso 5
+    </mat-panel-title>
+    <mat-panel-description>
+        Caso de desarrollo 
+    </mat-panel-description>
+</mat-expansion-panel-header>
+
+<table class="table table-bordered">
+    <tbody >
+        <tr *ngFor="let item of arr">
+          <td *ngFor="let x of item">{{x}}</td>
+        </tr>
+    </tbody>
+  </table>
+
+</mat-expansion-panel>

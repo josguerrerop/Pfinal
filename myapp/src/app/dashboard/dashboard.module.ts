@@ -14,6 +14,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { AlgoritmoComponent } from './components/algoritmo/algoritmo.component';
 import { FlujoComponent } from './components/flujo/flujo.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -23,7 +25,7 @@ import { FlujoComponent } from './components/flujo/flujo.component';
     LoginComponent,
     ReportesComponent,
     AlgoritmoComponent,
-    FlujoComponent,
+    FlujoComponent
   ],
   imports: [
     MatSelectModule,
@@ -34,7 +36,9 @@ import { FlujoComponent } from './components/flujo/flujo.component';
     MatIconModule,
     MatListModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule,
+    MatTableModule
   ],
 })
 export class DashboardModule { }
