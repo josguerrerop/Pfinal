@@ -15,12 +15,17 @@ export class AlgoritmoComponent implements OnInit {
    ];
 
    arr:Array<Number[]>=[];
+   bus:Array<Number[]>=[];
+   gen:Array<Number[]>=[];
+   genC:Array<Number[]>=[];
+   RD:Array<Number[]>=[];
+   Tam:Number=0;
+   Recursos:Number=0;
+   Ataque_Lineas:Array<Number[]>=[];
+   Ataque_Generadores:Array<Number[]>=[];
+   
 
   constructor(private matlabService:MatlabService) { }
-
- Seleccion(){
-
- }
 
   ngOnInit(): void {
     console.log(200)
@@ -28,10 +33,31 @@ export class AlgoritmoComponent implements OnInit {
       res => {
         this.data=res;
         this.arr=this.data.lhs[0].branch;
-        console.log(this.arr);
+        this.bus=this.data.lhs[0].bus;
+        this.gen=this.data.lhs[0].gen;
+        this.genC=this.data.lhs[0].gencost;
+        this.RD=this.data.lhs[1];
+        this.Tam=this.data.lhs[2];
+        this.Recursos=this.data.lhs[3];
+        this.Ataque_Lineas=this.data.lhs[4];
+        this.Ataque_Generadores=this.data.lhs[5];
+        console.log(this.data);
       }
     );
-    
+  }
+
+  GenerarVector(){
+    this.matlabService.GenerarVector(
+      this.data.lhs[0],
+      this.RD,
+      this.Tam,
+      this.Recursos,
+      this.Ataque_Lineas,
+      this.Ataque_Generadores).subscribe(
+        res=>{
+          console.log(res)
+        }
+      );
   }
 
 }

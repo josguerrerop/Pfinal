@@ -1,0 +1,62 @@
+#dtHorizontalExample th, td {
+    white-space: nowrap;
+    }
+
+.RD {
+    width: 85%;
+}
+
+.RX{
+    width: 80%;
+}
+
+.divider{
+    border-right: 100px;
+    width: 80%
+}
+
+
+  .PRD{
+   margin-left: 12%;
+  }
+
+  .General{
+    margin-left: 20%;
+  }
+
+  .gene{
+    padding-left: 180px;
+  }
+  .genec{
+    padding-left: 180px;
+  }
+
+  @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+.google-btn {
+  width: 230px;
+  height: 42px;
+  background-color:#5c5a5a;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(23, 26, 221, 0.25);
+}
+
+
+.google-btn .btn-text {
+  float: right;
+  margin: 11px 11px 0 0;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+ 
+}
+.google-btn:hover {
+  box-shadow: 0 0 6px #d83c31;
+}
+.google-btn:active {
+  background: #94534c;
+}
+
+.Vec{
+  padding-left: 27%;
+}

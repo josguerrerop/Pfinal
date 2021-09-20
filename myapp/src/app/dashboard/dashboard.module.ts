@@ -16,6 +16,7 @@ import { AlgoritmoComponent } from './components/algoritmo/algoritmo.component';
 import { FlujoComponent } from './components/flujo/flujo.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatDialogModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    MatDividerModule
   ],
 })
 export class DashboardModule { }
