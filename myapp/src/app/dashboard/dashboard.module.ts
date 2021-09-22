@@ -17,7 +17,11 @@ import { FlujoComponent } from './components/flujo/flujo.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { PobInterdiccionComponent } from './components/algoritmo/pob-interdiccion/pob-interdiccion.component';
+import { MatButtonModule } from '@angular/material/button';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -26,9 +30,12 @@ import {MatDividerModule} from '@angular/material/divider';
     LoginComponent,
     ReportesComponent,
     AlgoritmoComponent,
-    FlujoComponent
+    FlujoComponent,
+    PobInterdiccionComponent
   ],
   imports: [
+    MatProgressSpinnerModule,
+    MatTabsModule,
     MatSelectModule,
     MatFormFieldModule,
     CommonModule,
@@ -40,7 +47,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDialogModule,
     MatExpansionModule,
     MatTableModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressBarModule,
+    MatButtonModule
   ],
 })
 export class DashboardModule { }

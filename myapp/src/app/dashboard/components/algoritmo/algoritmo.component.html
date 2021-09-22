@@ -1,195 +1,207 @@
 <p>ALGORITMO GENETICO</p><br><br>
 
-<mat-form-field appearance="fill">
-    <mat-label>Seleccione el caso</mat-label>
- <mat-select>
-  <mat-option *ngFor="let option of caso" [value]="option.val"  required>
-   {{option.val}}
-  </mat-option>
- </mat-select>
-</mat-form-field>
+<mat-progress-bar mode="indeterminate" *ngIf="bar"></mat-progress-bar>
 
-<mat-divider></mat-divider>
-
-<mat-expansion-panel>
-<mat-expansion-panel-header>
-    <mat-panel-title>
-        Caso 5
-    </mat-panel-title>
-    <mat-panel-description>
-        Caso de desarrollo 
-    </mat-panel-description>
-</mat-expansion-panel-header>
-<h4>BRANCH</h4>							
-<table class="table table-striped table-bordered table-sm" >
-    <thead>
-        <tr>
-          <th>FBUS</th>
-          <th>TBUS</th>
-          <th>R</th>
-          <th>X</th>
-          <th>B</th>
-          <th>RATEA</th>
-          <th>RATEB</th>
-          <th>RATEC</th>
-          <th>RATIO</th>
-          <th>ANGLE</th>
-          <th>STATUS</th>
-          <th>ANGMIN</th>
-          <th>ANGMAX</th>
-        </tr>
-      </thead>
-    <tbody >
-        <tr *ngFor="let item of arr">
-          <td *ngFor="let x of item">{{x}}</td>
-        </tr>
-    </tbody>
-  </table>
-  <h4>BUS</h4>	
-  <table class="table table-striped table-bordered table-sm" >
-    <thead>
-        <tr>
-          <th>BUS</th>
-          <th>TYPE</th>
-          <th>PD</th>
-          <th>QD</th>
-          <th>GS</th>
-          <th>BS</th>
-          <th>AREA</th>
-          <th>VM</th>
-          <th>VA</th>
-          <th>BASEKV</th>
-          <th>ZONE</th>
-          <th>VMAX</th>
-          <th>VMIN</th>
-        </tr>
-      </thead>
-    <tbody >
-        <tr *ngFor="let items of bus">
-          <td *ngFor="let item of items">{{item}}</td>
-        </tr>
-    </tbody>
-  </table>
-
-  <h4>GEN</h4>	
-  <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
-  width="100%">
-    <thead>							
-        <tr>
-          <th>BUS</th>
-          <th>Pg</th>
-          <th>Qg</th>
-          <th>Qmax</th>
-          <th>Qmin</th>
-          <th>Vg</th>
-          <th>mBase</th>
-          <th>status</th>
-          <th>Pmax</th>
-          <th>Pc1</th>
-          <th>Pc2</th>
-          <th>Qc1min</th>
-          <th>Qc1max</th>
-          <th>Qc2min</th>
-          <th>Qc2max</th>
-          <th>ramp_agc</th>
-          <th>ramp_10</th>
-          <th>ramp_30</th>
-          <th>ramp_q</th>
-          <th>apf</th>
-        </tr>
-      </thead>
-    <tbody >
-        <tr *ngFor="let items of gen">
-          <td *ngFor="let item of items">{{item}}</td>
-        </tr>
-    </tbody>
-  </table>
-
-  <h4>GEN COST</h4>	
-  <table class="table" width="100%">
-    <tbody >
-        <tr *ngFor="let items of genC">
-          <td *ngFor="let item of items">{{item}}</td>
-        </tr>
-    </tbody>
-  </table>
-
-</mat-expansion-panel>
-
-<mat-divider></mat-divider>
-
-<mat-expansion-panel class="RD">
-  <mat-expansion-panel-header>
-      <mat-panel-title >
-          RD
+<mat-tab-group #tabs>
+  <mat-tab label="Generación"> 
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione el caso</mat-label>
+   <mat-select>
+    <mat-option *ngFor="let option of caso" [value]="option.val" (click)="SelectCase(option.val)"  required>
+     {{option.val}}
+    </mat-option>
+   </mat-select>
+  </mat-form-field>
+    
+  <mat-expansion-panel >
+  <mat-expansion-panel-header [collapsedHeight]="'100px'">
+      <mat-panel-title>
+          Caso 5
       </mat-panel-title>
-      <mat-panel-description class="PRD">
-          Respuesta a la demanda
+      <mat-panel-description>
+          Caso de desarrollo 
       </mat-panel-description>
   </mat-expansion-panel-header>
+  <h4>BRANCH</h4>							
   <table class="table table-striped table-bordered table-sm" >
-    <thead>
-        <tr>
-          <th>C</th>
-          <th>V_C</th>
-          <th>P_RD</th>
-          <th>C_RD</th>
-          <th>C_D</th>
-        </tr>
-      </thead>
-    <tbody >
-        <tr *ngFor="let item of RD">
-          <td *ngFor="let x of item">{{x}}</td>
-        </tr>
-    </tbody>
-  </table>							 
+      <thead>
+          <tr>
+            <th>FBUS</th>
+            <th>TBUS</th>
+            <th>R</th>
+            <th>X</th>
+            <th>B</th>
+            <th>RATEA</th>
+            <th>RATEB</th>
+            <th>RATEC</th>
+            <th>RATIO</th>
+            <th>ANGLE</th>
+            <th>STATUS</th>
+            <th>ANGMIN</th>
+            <th>ANGMAX</th>
+          </tr>
+        </thead>
+      <tbody >
+          <tr *ngFor="let item of arr">
+            <td *ngFor="let x of item">{{x}}</td>
+          </tr>
+      </tbody>
+    </table>
+    <h4>BUS</h4>	
+    <table class="table table-striped table-bordered table-sm" >
+      <thead>
+          <tr>
+            <th>BUS</th>
+            <th>TYPE</th>
+            <th>PD</th>
+            <th>QD</th>
+            <th>GS</th>
+            <th>BS</th>
+            <th>AREA</th>
+            <th>VM</th>
+            <th>VA</th>
+            <th>BASEKV</th>
+            <th>ZONE</th>
+            <th>VMAX</th>
+            <th>VMIN</th>
+          </tr>
+        </thead>
+      <tbody >
+          <tr *ngFor="let items of bus">
+            <td *ngFor="let item of items">{{item}}</td>
+          </tr>
+      </tbody>
+    </table>
+  
+    <h4>GEN</h4>	
+    <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+    width="100%">
+      <thead>							
+          <tr>
+            <th>BUS</th>
+            <th>Pg</th>
+            <th>Qg</th>
+            <th>Qmax</th>
+            <th>Qmin</th>
+            <th>Vg</th>
+            <th>mBase</th>
+            <th>status</th>
+            <th>Pmax</th>
+            <th>Pc1</th>
+            <th>Pc2</th>
+            <th>Qc1min</th>
+            <th>Qc1max</th>
+            <th>Qc2min</th>
+            <th>Qc2max</th>
+            <th>ramp_agc</th>
+            <th>ramp_10</th>
+            <th>ramp_30</th>
+            <th>ramp_q</th>
+            <th>apf</th>
+          </tr>
+        </thead>
+      <tbody >
+          <tr *ngFor="let items of gen">
+            <td *ngFor="let item of items">{{item}}</td>
+          </tr>
+      </tbody>
+    </table>
+  
+    <h4>GEN COST</h4>	
+    <table class="table" width="100%">
+      <tbody >
+          <tr *ngFor="let items of genC">
+            <td *ngFor="let item of items">{{item}}</td>
+          </tr>
+      </tbody>
+    </table>
+  
   </mat-expansion-panel>
-
-  <mat-divider class="divider"></mat-divider>
-  <mat-expansion-panel class="RX">
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-        </mat-panel-title >
-        <mat-panel-description class="General">
-            General
+  
+  <mat-divider></mat-divider>
+  
+  <mat-expansion-panel class="RD">
+    <mat-expansion-panel-header [collapsedHeight]="'80px'">
+        <mat-panel-title >
+            RD
+        </mat-panel-title>
+        <mat-panel-description class="PRD">
+            Respuesta a la demanda
         </mat-panel-description>
     </mat-expansion-panel-header>
     <table class="table table-striped table-bordered table-sm" >
       <thead>
-        <tr>
-          <th>Tamaño</th>
-          <th>Recursos</th>
-        </tr>
-      </thead>
-      <tbody >
           <tr>
-            <td>10</td>
-            <td>300</td>
+            <th>C</th>
+            <th>V_C</th>
+            <th>P_RD</th>
+            <th>C_RD</th>
+            <th>C_D</th>
+          </tr>
+        </thead>
+      <tbody >
+          <tr *ngFor="let item of RD">
+            <td *ngFor="let x of item">{{x}}</td>
           </tr>
       </tbody>
-    </table>		
-    
-    <table class="table table-hover" >
-      <thead>
-        <tr>
-          <th>Ataque lineas</th>
-          <th class="gene">Ataque Generadores</th>
-        </tr>
-      </thead>
-      <tbody >
-          <tr>
-            <td>[{{Ataque_Lineas}}]</td>
-
-            <td class="genec">[{{Ataque_Generadores}}]</td>
-          </tr>
-      </tbody>
-    </table>	
+    </table>							 
     </mat-expansion-panel>
-
-    <div class="Vec">
-      <div class="card-body">
-        <div class="google-btn" (click)="GenerarVector()">
-          <p class="btn-text"><b>Generar vector de interdicción</b></p>
+  
+    <mat-divider class="divider"></mat-divider>
+    <mat-expansion-panel class="RX">
+      <mat-expansion-panel-header [collapsedHeight]="'60px'">
+          <mat-panel-title>
+          </mat-panel-title >
+          <mat-panel-description class="General">
+              General
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <table class="table table-striped table-bordered table-sm" >
+        <thead>
+          <tr>
+            <th>Tamaño</th>
+            <th>Recursos</th>
+          </tr>
+        </thead>
+        <tbody >
+            <tr>
+              <td>10</td>
+              <td>300</td>
+            </tr>
+        </tbody>
+      </table>		
+      
+      <table class="table table-hover" >
+        <thead>
+          <tr>
+            <th>Ataque lineas</th>
+            <th class="gene">Ataque Generadores</th>
+          </tr>
+        </thead>
+        <tbody >
+            <tr>
+              <td>[{{Ataque_Lineas}}]</td>
+  
+              <td class="genec">[{{Ataque_Generadores}}]</td>
+            </tr>
+        </tbody>
+      </table>	
+      </mat-expansion-panel>
+  
+      <div class="Vec">
+        <div class="card-body">
+          <div class="google-btn" (click)="GenerarVector()">
+            <p class="btn-text"><b>Generar vector de interdicción</b></p>
+        </div>
+        </div>
       </div>
-      </div>
+      <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>  
+  </mat-tab>
+  <mat-tab label="Resultados" > 
+    <div class="spinner-wrapper" *ngIf="spinner">
+      <mat-spinner></mat-spinner>
     </div>
+  </mat-tab>
+
+</mat-tab-group>
+
