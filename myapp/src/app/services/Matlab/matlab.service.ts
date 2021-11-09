@@ -8,18 +8,20 @@ export class MatlabService {
 
 
   private URL_CARACTERISTICAS = "http://localhost:9910/entrada/entrada?mode=async";
-  private URL_ALGORITMO = "http://localhost:9910/poblacion/poblacion";
   
-  private URL_S ="http://localhost:9910/~6e02029f-4fdc-4ef2-90f1-46e58cdc0424/requests/cebe6f1c-9b09-445d-b2f1-9168338c63a5/result"
+  private URL_ALGORITMO = "http://localhost:9911/poblacion/poblacion";
+  //
+
   constructor(private http: HttpClient) { }
 
-getRun(){
-  return this.http.get(this.URL_S);
+
+
+GetresAsync(self:string){
+  let URL:string="http://localhost:9910"+self+"/result";
+  return this.http.get(URL);
 }
 
-
   SelectCase(caso:string){
-    console.log(caso)
     return this.http.post(this.URL_CARACTERISTICAS,{ "nargout": 6,
     "rhs": [caso],
     "outputFormat":{ "mode" : "small", "nanInfFormat" : "string" }
@@ -38,7 +40,7 @@ getRun(){
                   {
                     return this.http.post(this.URL_ALGORITMO,{ "nargout": 3,
                    "rhs": [caso,RD,[Tam],[Recursos],Ataque_Lineas,Ataque_Generadores],
-                   "outputFormat":{ "mode" : "small", "nanInfFormat" : "string" }
+                   "outputFormat":{ "mode" : "small", "nanInfFormat" : "object" }
      }); 
     }
 }

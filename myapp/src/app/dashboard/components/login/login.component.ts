@@ -3,7 +3,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SocialAuthService } from "angularx-social-login";
 import {GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-import { GoogleService } from 'src/app/services/google.service'; 
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: any,
     private dialogRef: MatDialogRef<LoginComponent>,
     private authService: SocialAuthService, 
-    private dataService:GoogleService ){
+     ){
       dialogRef.disableClose = true;  
   }
 
@@ -28,19 +27,6 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       console.log(user)
       this.closeDialog();
-      this.dataService.postSocialLogin({email:user.email}).subscribe(
-        res => {
-          /*
-          if(res.status==200){
-            console.log(user)
-              //this.socialUser = user;
-              //this.loggedIn = (user != null);
-          }
-        
-        */
-       
-        }
-      )
     });  
   }
 

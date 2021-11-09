@@ -3,7 +3,8 @@ import { MatlabService } from 'src/app/services/Matlab/matlab.service';
 import {MatDialog} from '@angular/material/dialog';
 import { PobInterdiccionComponent } from './pob-interdiccion/pob-interdiccion.component';
 import { ViewChild } from '@angular/core';
-import { MatTabGroup } from '@angular/material/tabs';
+import { MatTabGroup } from '@angular/material/tabs'; 
+import { BackendService } from 'src/app/services/Backend/backend.service';
 @Component({
   selector: 'app-algoritmo',
   templateUrl: './algoritmo.component.html',
@@ -11,11 +12,13 @@ import { MatTabGroup } from '@angular/material/tabs';
 })
 
 export class AlgoritmoComponent implements OnInit {
+  
   @ViewChild('tabs') tabGroup!: MatTabGroup;
 
 
  spinner:boolean = false;
    data:any;
+   resultado:any;
    bar:boolean= false;
    caso =[
      {val:'cinco'},
@@ -31,62 +34,109 @@ export class AlgoritmoComponent implements OnInit {
    Recursos:Number=0;
    Ataque_Lineas:Array<Number[]>=[];
    Ataque_Generadores:Array<Number[]>=[];
-   
+  VectorInterdiccion:Array<Number>=[];
+  PoblacionInterdiccion:Array<Number[]>=[];
+  Vector_Interdiccion :any;
+  case:string='';
+   public pet:Boolean=false;
+private URL1:Object={}
 
-  constructor(private matlabService:MatlabService, private dialogo:MatDialog) { }
+  constructor(private matlabService:MatlabService, private backService: BackendService,private dialogo:MatDialog) { }
 
 
-SelectCase(caso:string):void{
-  this.bar=true;
-  this.matlabService.SelectCase(caso).subscribe(
-    res => {
-      console.log(res)
-      //this.data=res;
-      //this.arr=this.data.lhs[0].branch;
-      //this.bus=this.data.lhs[0].bus;
-      //this.gen=this.data.lhs[0].gen;
-      //this.genC=this.data.lhs[0].gencost;
-      //this.RD=this.data.lhs[1];
-      //this.Tam=this.data.lhs[2];
-      //this.Recursos=this.data.lhs[3];
-      //this.Ataque_Lineas=this.data.lhs[4];
-      //this.Ataque_Generadores=this.data.lhs[5];
-      //console.log(this.data);
-      this.bar=false;
-    }
-  );
-}
+  SelectCase(caso:string):void{
+  this.case= caso;
+    this.matlabService.SelectCase(caso).subscribe(
+      res=>{
+       let data:any = res;
+       data = data.self;
+       this.Algoritmo(data);
+    })
+  }
+
+
 
   ngOnInit(): void {
-   this.matlabService.getRun().subscribe(res=>{
-     console.log(res)
-   });
+    
   }
+
+   delay () {
+    setTimeout(()=>{},5000)
+}
+
+  Algoritmo(self:any){
+    this.matlabService.GetresAsync(self).subscribe(
+      res => {
+        this.data=res;
+        this.arr=this.data.lhs[0].branch;
+        this.bus=this.data.lhs[0].bus;
+        this.gen=this.data.lhs[0].gen;
+        this.genC=this.data.lhs[0].gencost;
+        this.RD=this.data.lhs[1];
+        this.Tam=this.data.lhs[2];
+        this.Recursos=this.data.lhs[3];
+        this.Ataque_Lineas=this.data.lhs[4];
+        this.Ataque_Generadores=this.data.lhs[5];
+        this.bar=false;
+        console.log(res)
+      }
+    )
+  }
+
+  tr(){
+    this.spinner=true;
+    let startFrom = new Date().getMinutes();
+    this.matlabService.GenerarVector(
+      this.data.lhs[0],
+      this.RD,this.Tam,
+      this.Recursos,this.Ataque_Lineas,this.Ataque_Generadores)
+      .subscribe(
+        res=>{
+          try {
+            let data: any;
+            data=res;
+            this.Vector_Interdiccion = data.lhs[0];
+          console.log(res);
+          console.log(new Date().getMinutes()- startFrom);
+          this.spinner=false;
+          } catch(err){
+            alert(err);
+          }finally{
+            this.preguntar();
+          }
+        });
+  }
+
+preguntar(){
+  this.delay()
+  this.dialogo
+    .open(PobInterdiccionComponent, {
+      data: `¿Desea guardar resultados?`
+    }).afterClosed().subscribe((confirmado) => {
+      if (confirmado) {
+
+        let obj:Object = {
+          x:this.Vector_Interdiccion,
+          Id:this.case
+        }
+console.log(obj)
+        this.backService.ServicioAG(obj).subscribe(
+         res =>{
+          console.log(res)
+         }
+        )
+      }
+    });
+}
 
   GenerarVector():void{
     this.dialogo
     .open(PobInterdiccionComponent, {
       data: `¿Desea generar vector de interdicción?`
-    })
-    .afterClosed()
-    .subscribe((confirmado: Boolean) => {
+    }).afterClosed().subscribe((confirmado) => {
       if (confirmado) {
-        this.spinner=true;
         this.tabGroup.selectedIndex = 1;
-        this.matlabService.GenerarVector(
-          this.data.lhs[0],
-          this.RD,
-          this.Tam,
-          this.Recursos,
-          this.Ataque_Lineas,
-          this.Ataque_Generadores).subscribe(
-            res=>{
-              console.log(res)
-            }
-          );
-          this.spinner=false;
-      } else {
-       
+        this.tr();
       }
     });
   }

@@ -19,6 +19,9 @@ export class PobInterdiccionComponent implements OnInit {
       this.dialogo.close(true);
     }
    
+    
+
+
   ngOnInit() {
   }
 
