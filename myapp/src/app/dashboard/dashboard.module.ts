@@ -22,6 +22,8 @@ import { PobInterdiccionComponent } from './components/algoritmo/pob-interdiccio
 import { MatButtonModule } from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AnalisisComponent } from './components/analisis/analisis.component';
+import { AuxComponent } from './aux/aux.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReportesComponent,
     AlgoritmoComponent,
     FlujoComponent,
-    PobInterdiccionComponent
+    PobInterdiccionComponent,
+    AnalisisComponent,
+    AuxComponent,
   ],
   imports: [
     MatProgressSpinnerModule,

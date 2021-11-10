@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill">
+    <mat-label>Seleccione el caso</mat-label>
+ <mat-select>
+  <mat-option *ngFor="let option of caso" [value]="option.val" (click)="SelectCase(option.val)"  required>
+   {{option.val}}
+  </mat-option>
+ </mat-select>
+</mat-form-field>

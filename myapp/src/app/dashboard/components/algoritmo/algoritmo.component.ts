@@ -36,12 +36,17 @@ export class AlgoritmoComponent implements OnInit {
    Ataque_Generadores:Array<Number[]>=[];
   VectorInterdiccion:Array<Number>=[];
   PoblacionInterdiccion:Array<Number[]>=[];
-  Vector_Interdiccion :any;
+  Vector_Interdiccion :any=[1,1,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   case:string='';
    public pet:Boolean=false;
 private URL1:Object={}
 
-  constructor(private matlabService:MatlabService, private backService: BackendService,private dialogo:MatDialog) { }
+  constructor(private matlabService:MatlabService,
+              private backService: BackendService,
+              private dialogo:MatDialog,
+              
+
+              ) { }
 
 
   SelectCase(caso:string):void{
@@ -57,7 +62,9 @@ private URL1:Object={}
 
 
   ngOnInit(): void {
-    
+    this.data= (localStorage.getItem('data'));
+    console.log(JSON.parse(this.data));
+  
   }
 
    delay () {
@@ -68,6 +75,7 @@ private URL1:Object={}
     this.matlabService.GetresAsync(self).subscribe(
       res => {
         this.data=res;
+        localStorage.setItem('data', JSON.stringify(this.data));
         this.arr=this.data.lhs[0].branch;
         this.bus=this.data.lhs[0].bus;
         this.gen=this.data.lhs[0].gen;
@@ -117,7 +125,7 @@ preguntar(){
 
         let obj:Object = {
           x:this.Vector_Interdiccion,
-          Id:this.case
+          caso:this.case
         }
 console.log(obj)
         this.backService.ServicioAG(obj).subscribe(

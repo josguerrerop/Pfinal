@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SocketIoComponent } from './socket-io.component';
+import { AuxComponent } from './aux.component';
 
-describe('SocketIoComponent', () => {
-  let component: SocketIoComponent;
-  let fixture: ComponentFixture<SocketIoComponent>;
+describe('AuxComponent', () => {
+  let component: AuxComponent;
+  let fixture: ComponentFixture<AuxComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SocketIoComponent ]
+      declarations: [ AuxComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SocketIoComponent);
+    fixture = TestBed.createComponent(AuxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

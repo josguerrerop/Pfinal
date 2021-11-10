@@ -5,7 +5,7 @@ import {HomeComponent} from './components/home/home.component'
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { AlgoritmoComponent } from './components/algoritmo/algoritmo.component';
 import { FlujoComponent } from './components/flujo/flujo.component';
-
+import { AnalisisComponent } from './components/analisis/analisis.component';
 const routes: Routes = [
 {
   path: '',
@@ -26,6 +26,10 @@ const routes: Routes = [
     {
       path:'flujo',
       component:FlujoComponent
+    },
+    {
+      path:'Analisis',
+      component:AnalisisComponent
     }
   ]
 }
