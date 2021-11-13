@@ -7,9 +7,9 @@ import {HttpClient } from '@angular/common/http';
 export class MatlabService {
 
 
-  private URL_CARACTERISTICAS = "http://localhost:9910/entrada/entrada?mode=async";
+  private URL_CARACTERISTICAS = "http://localhost:9911/entrada/entrada?mode=async";
   
-  private URL_ALGORITMO = "http://localhost:9911/poblacion/poblacion";
+  private URL_ALGORITMO = "http://localhost:9909/poblacion/poblacion";
   //
 
   constructor(private http: HttpClient) { }
@@ -17,7 +17,7 @@ export class MatlabService {
 
 
 GetresAsync(self:string){
-  let URL:string="http://localhost:9910"+self+"/result";
+  let URL:string="http://localhost:9911"+self+"/result";
   return this.http.get(URL);
 }
 

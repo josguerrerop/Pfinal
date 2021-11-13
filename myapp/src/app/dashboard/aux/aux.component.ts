@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatlabService } from 'src/app/services/Matlab/matlab.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { BackendService } from 'src/app/services/Backend/backend.service';
 @Component({
   selector: 'app-aux',
   templateUrl: './aux.component.html',
@@ -27,9 +30,16 @@ export class AuxComponent implements OnInit {
   case:string='';
 
 
-  constructor(private matlabService:MatlabService) { }
+  constructor(private matlabService:MatlabService,
+              private location: Location, 
+              private router: Router,
+              private back:BackendService
+              ) { }
 
   ngOnInit(): void {
+    if(this.location.path() != ''){
+      console.log(this.location.path());
+    } 
   }
  
   Algoritmo(self:any){
@@ -61,6 +71,14 @@ export class AuxComponent implements OnInit {
          data = data.self;
          this.Algoritmo(data);
       })
+
+      if(this.location.path()=='/das/Analisis'){
+        this.back.ConsultarVector(caso).subscribe(
+          res => {
+            console.log(res)
+          }
+        )
+      }
     }
 
 }

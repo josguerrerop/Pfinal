@@ -1,2 +1,14 @@
 <p>Analisis de vulnerabilidad</p><br><br>
+<mat-tab-group #tabs>
+    <mat-tab label="Análisis"> 
 <app-aux (datos)="realizaComunicacionHijo($event)"> </app-aux>
+
+<mat-form-field class="readonly-wrapper" appearance="outline">
+    <mat-label>{{title}}</mat-label>
+    <mat-select class="readonly-block"  [disabled]="true">
+ </mat-select>
+</mat-form-field>
+
+</mat-tab>
+
+</mat-tab-group>

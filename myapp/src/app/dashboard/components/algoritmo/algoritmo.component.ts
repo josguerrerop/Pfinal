@@ -34,9 +34,11 @@ export class AlgoritmoComponent implements OnInit {
    Recursos:Number=0;
    Ataque_Lineas:Array<Number[]>=[];
    Ataque_Generadores:Array<Number[]>=[];
-  VectorInterdiccion:Array<Number>=[];
-  PoblacionInterdiccion:Array<Number[]>=[];
-  Vector_Interdiccion :any=[1,1,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+   VectorInterdiccion:Array<Number>=[];
+   PoblacionInterdiccion:Array<Number[]>=[];
+   Vector_Interdiccion :any=[];
+   Pob_Interdiccion :any=[[Number]];
+
   case:string='';
    public pet:Boolean=false;
 private URL1:Object={}
@@ -104,6 +106,7 @@ private URL1:Object={}
             let data: any;
             data=res;
             this.Vector_Interdiccion = data.lhs[0];
+            this.Pob_Interdiccion = data.lhs[1];
           console.log(res);
           console.log(new Date().getMinutes()- startFrom);
           this.spinner=false;
@@ -122,9 +125,9 @@ preguntar(){
       data: `¿Desea guardar resultados?`
     }).afterClosed().subscribe((confirmado) => {
       if (confirmado) {
-
         let obj:Object = {
           x:this.Vector_Interdiccion,
+          p:this.Pob_Interdiccion,
           caso:this.case
         }
 console.log(obj)

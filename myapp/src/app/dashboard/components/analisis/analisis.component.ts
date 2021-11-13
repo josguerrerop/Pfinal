@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AuxComponent } from '../../aux/aux.component';
+
 @Component({
   selector: 'app-analisis',
   templateUrl: './analisis.component.html',
@@ -9,7 +8,7 @@ import { AuxComponent } from '../../aux/aux.component';
 export class AnalisisComponent implements OnInit {
 
   data:any;
- 
+  title:any='Vector de interdicción';
 
   constructor() { }
 

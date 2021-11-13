@@ -7,11 +7,15 @@ import {HttpClient } from '@angular/common/http';
 export class BackendService {
 
   private URI1 = "http://localhost:3000/ALgoritmoG/";
+  private URI2 = "http://localhost:3000/ALgoritmoG/Vector";
 
   ServicioAG(Vector:Object){
     return this.http.post(this.URI1 ,{Vector});
   }
 
+  ConsultarVector(caso:string){
+    return this.http.post(this.URI2 ,{caso});
+  }
 
   constructor(private http: HttpClient) { }
 }
