@@ -42,7 +42,7 @@ export class AuxComponent implements OnInit {
     } 
   }
  
-  Algoritmo(self:any){
+  datosIniciales(self:any){
     this.matlabService.GetresAsync(self).subscribe(
       res => {
         this.data=res;
@@ -57,6 +57,7 @@ export class AuxComponent implements OnInit {
         this.Ataque_Lineas=this.data.lhs[4];
         this.Ataque_Generadores=this.data.lhs[5];
         this.bar=false;
+        this.data.caso =this.case;
         this.datos.emit(this.data)
       }
     )
@@ -69,16 +70,10 @@ export class AuxComponent implements OnInit {
         res=>{
          let data:any = res;
          data = data.self;
-         this.Algoritmo(data);
+         this.datosIniciales(data);
       })
 
-      if(this.location.path()=='/das/Analisis'){
-        this.back.ConsultarVector(caso).subscribe(
-          res => {
-            console.log(res)
-          }
-        )
-      }
+     
     }
 
 }

@@ -10,7 +10,8 @@ export class MatlabService {
   private URL_CARACTERISTICAS = "http://localhost:9911/entrada/entrada?mode=async";
   
   private URL_ALGORITMO = "http://localhost:9909/poblacion/poblacion";
-  //
+  
+  private URL_ANALISIS ="http://localhost:9910/Analisis/Analisis"
 
   constructor(private http: HttpClient) { }
 
@@ -43,4 +44,11 @@ GetresAsync(self:string){
                    "outputFormat":{ "mode" : "small", "nanInfFormat" : "object" }
      }); 
     }
+
+    RealizarAnalisis(caso:Object,RD:Array<Number[]>,vec:Array<Number[]>,pob:Array<Number[]>,){
+      return this.http.post(this.URL_ANALISIS,{ "nargout": 3,
+      "rhs": [caso,RD,vec,pob],
+      "outputFormat":{ "mode" : "small", "nanInfFormat" : "object" }
+    });
+}
 }

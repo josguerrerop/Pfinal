@@ -1,7 +1,4 @@
-.readonly-wrapper {
-    cursor: move;
-}
-
-.readonly-wrapper .readonly-block {
-    pointer-events: none;
+.resultados{
+    margin-left: 30%;
+    margin-top:0%
 }
