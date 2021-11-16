@@ -32,8 +32,6 @@ export class AuxComponent implements OnInit {
 
   constructor(private matlabService:MatlabService,
               private location: Location, 
-              private router: Router,
-              private back:BackendService
               ) { }
 
   ngOnInit(): void {

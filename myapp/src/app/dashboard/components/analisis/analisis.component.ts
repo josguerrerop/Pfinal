@@ -17,7 +17,7 @@ export class AnalisisComponent implements OnInit {
   resultados:Array<number[]>=[];
   elemento:Array<number>=[];
   constructor(private back:BackendService,private Matlab:MatlabService) { }
-
+  
   ngOnInit(): void {
     
   }
@@ -43,10 +43,31 @@ export class AnalisisComponent implements OnInit {
         let aux=this.resultados[2];
         this.resultados[2]=this.resultados[3];
         this.resultados[3]=aux
-        console.log(res)
+        //console.log(res)
+        this.GetNodos()
       }
     )
   }
+
+ GetNodos(){
+   let nodo1= this.results.lhs[0].mwdata[0].nodos;
+   let nodo2= this.results.lhs[0].mwdata[1].nodos;
+   let nodo3= this.results.lhs[0].mwdata[3].nodos;
+   let nodo4= this.results.lhs[0].mwdata[2].nodos;
+   let caso =this.data.caso;
+   let obj ={
+  nodo1,
+  nodo2,
+  nodo3,
+  nodo4,
+  caso
+   }
+   this.back.GuardarFlujo(obj).subscribe(res=>{
+    
+   })
+   console.log(obj)
+ }
+
 
   realizaComunicacionHijo(event:any) {
     this.data = event;
