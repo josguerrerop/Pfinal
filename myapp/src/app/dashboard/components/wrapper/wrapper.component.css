@@ -3,11 +3,24 @@ mat-sidenav-container {
 
 }
 
+
 mat-sidenav{
-    width: 250px;
-    z-index: 1000;
+ 
+  min-width: 55px !important;
+  margin-left:auto !important;
+  align-items: left;
   }
   
+  .chevron-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+    
+  }
+
+  .chevron-button.rotated {
+    transform: rotate(180deg);
+  }
+
 
 mat-toolbar {
     border: none;
@@ -16,13 +29,21 @@ mat-toolbar {
   align-items: center;
   justify-content: none;
   height: 3.9rem;
-  width: 90%;
+  width: 100%;
   background-color: rgb(53, 53, 53);
   font-family: Lato;
   color:white;
 }
 .item {
     background-color: rgb(212, 209, 209);
+}
+
+.disabled
+{
+  pointer-events: none;
+  /* for "disabled" effect */
+  opacity: 2.8;
+  background: rgb(238, 237, 237);
 }
 
 

@@ -1,49 +1,50 @@
-<mat-sidenav-container >
-
-<mat-sidenav #sidenav mode="side" opened="true">
- <mat-nav-list>
-
-   <mat-list-item [routerLink]="'home'" class="item">
-    <mat-icon mat-list-icon >home</mat-icon>
-   </mat-list-item>
-
-   <mat-list-item [routerLink]="'reportes'">
-    <mat-icon mat-list-icon class="">bar_chart</mat-icon>
-    <span>Reportes</span>
-   </mat-list-item>
- <mat-divider></mat-divider>
-
-   <mat-list-item [routerLink]="'Algoritmo'">
-    <mat-icon mat-list-icon class="">blur_on</mat-icon>
-    <span>Algoritmo genético</span>
-   </mat-list-item>
-
-
-   <mat-list-item [routerLink]="'Analisis'">
-    <mat-icon mat-list-icon class="">code</mat-icon>
-    <span> Análisis de vulnerabilidad</span>
-   </mat-list-item>
-
-   <mat-list-item [routerLink]="'Flujo'">
-    <mat-icon mat-list-icon class="">offline_bolt</mat-icon>
-    <span>Flujo optimo de potencia</span>
-   </mat-list-item>
-   
-
- </mat-nav-list>
-</mat-sidenav>
-
-
+<mat-sidenav-container autozise="true">
+  <mat-sidenav class="sidenav" mode="side" opened="true" [style.width]="expanded ? '280px' : '55px'" autozise="false">
+    <mat-nav-list>
+     <mat-list-item>
+      <mat-icon mat-list-icon class="chevron-button sidenav-button" 
+      (click)="expander()" [ngClass]="{'rotated': expanded}"
+      >reorder</mat-icon>
+     </mat-list-item>
+     <mat-list-item [routerLink]="'reportes'">
+      <mat-icon mat-list-icon class="">bar_chart</mat-icon>
+      <span *ngIf="expanded">Reportes</span>
+     </mat-list-item>
+   <mat-divider></mat-divider>
+     <mat-list-item [routerLink]="'Algoritmo'">
+      <mat-icon mat-list-icon class="">blur_on</mat-icon>
+      <span  *ngIf="expanded">Algoritmo genético</span>
+     </mat-list-item>
+     <mat-list-item [routerLink]="'Analisis'">
+      <mat-icon mat-list-icon class="">code</mat-icon>
+      <span  *ngIf="expanded"> Análisis de vulnerabilidad</span>
+     </mat-list-item>
+     <mat-list-item [routerLink]="'Flujo'">
+      <mat-icon mat-list-icon class="">offline_bolt</mat-icon>
+      <span  *ngIf="expanded">Flujo optimo de potencia</span>
+     </mat-list-item>
+   </mat-nav-list>
+  </mat-sidenav>
+<mat-sidenav-content [ngClass]="{'disabled':expanded}">
+  <div>
     <mat-toolbar>
-        Gestión de vulnerabilidad
+      Gestión de vulnerabilidad
     </mat-toolbar>
-    
     <router-outlet></router-outlet>
-    
+  </div>
+</mat-sidenav-content>
   </mat-sidenav-container>
 
+
+
+
+
+
+
+
+
     
-   
+  
     
 
 
