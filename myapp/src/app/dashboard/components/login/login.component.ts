@@ -19,13 +19,22 @@ export class LoginComponent implements OnInit {
     private dialogRef: MatDialogRef<LoginComponent>,
     private authService: SocialAuthService, 
      ){
-      dialogRef.disableClose = true;  
+      dialogRef.disableClose = true; 
+  }
+
+  public isLoggedIn():boolean{
+    return this.loggedIn;
   }
 
   loginWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
-      console.log(user)
+      if(user){
+        this.loggedIn=true;
+        console.log(user)
+        localStorage.setItem('Loged', JSON.stringify(this.loggedIn));
+        localStorage.setItem('photo', JSON.stringify(user.photoUrl));
+      }
       this.closeDialog();
     });  
   }
@@ -39,6 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+ 
   }
 
 }

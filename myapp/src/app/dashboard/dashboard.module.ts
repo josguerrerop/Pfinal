@@ -9,7 +9,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select'
 import {MatFormFieldModule} from '@angular/material/form-field'
-import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { AlgoritmoComponent } from './components/algoritmo/algoritmo.component';
@@ -28,7 +27,6 @@ import { AuxComponent } from './aux/aux.component';
 @NgModule({
   declarations: [
     WrapperComponent,
-    HomeComponent,
     LoginComponent,
     ReportesComponent,
     AlgoritmoComponent,
