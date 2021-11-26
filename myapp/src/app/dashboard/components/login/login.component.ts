@@ -30,10 +30,9 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
       if(user){
-        this.loggedIn=true;
         console.log(user)
-        localStorage.setItem('Loged', JSON.stringify(this.loggedIn));
-        localStorage.setItem('photo', JSON.stringify(user.photoUrl));
+        localStorage.setItem('user', JSON.stringify(user));
+        window.location.reload();
       }
       this.closeDialog();
     });  

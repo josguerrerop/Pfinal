@@ -7,7 +7,7 @@ import {HttpClient } from '@angular/common/http';
 export class MatlabService {
 
 
-  private URL_CARACTERISTICAS = "http://localhost:9911/entrada/entrada?mode=async";
+  private URL_CARACTERISTICAS = "http://localhost:9911/Caracteristicas/Caracteristicas";
   
   private URL_ALGORITMO = "http://localhost:9909/poblacion/poblacion";
   
@@ -22,8 +22,8 @@ GetresAsync(self:string){
   return this.http.get(URL);
 }
 
-  SelectCase(caso:string){
-    return this.http.post(this.URL_CARACTERISTICAS,{ "nargout": 6,
+  SelectCase(caso:number){
+    return this.http.post(this.URL_CARACTERISTICAS,{ "nargout": 9,
     "rhs": [caso],
     "outputFormat":{ "mode" : "small", "nanInfFormat" : "string" }
     

@@ -23,6 +23,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AnalisisComponent } from './components/analisis/analisis.component';
 import { AuxComponent } from './aux/aux.component';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { AuxComponent } from './aux/aux.component';
     AuxComponent,
   ],
   imports: [
+    MatMenuModule,
     MatProgressSpinnerModule,
     MatTabsModule,
     MatSelectModule,

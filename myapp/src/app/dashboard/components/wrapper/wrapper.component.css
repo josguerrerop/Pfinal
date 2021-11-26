@@ -23,13 +23,9 @@ mat-sidenav{
 
 
 mat-toolbar {
-    border: none;
-  position: fixed;
+  border: none;
   display:flex;
-  align-items: center;
-  justify-content: none;
   height: 3.9rem;
-  width: 100%;
   background-color: rgb(53, 53, 53);
   font-family: Lato;
   color:white;

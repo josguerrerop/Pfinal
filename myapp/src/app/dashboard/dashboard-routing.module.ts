@@ -12,7 +12,7 @@ const routes: Routes = [
   component: WrapperComponent,
   children: [
     {
-      path:'reportes',
+      path:'Reportes',
       component:ReportesComponent
     },
     {

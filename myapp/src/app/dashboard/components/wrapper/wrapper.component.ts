@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {LoginComponent} from '../login/login.component'
 import { Router } from '@angular/router';
+import { SocialAuthService } from "angularx-social-login";
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-wrapper',
@@ -10,24 +12,32 @@ import { Router } from '@angular/router';
 })
 export class WrapperComponent implements OnInit {
    expanded:boolean = false;
-   private isLoggedIn:any;
-   private parse:any
-   
+   private data:any;
+   public  user:any=false;
+  
+
   constructor(private dialog: MatDialog,
     private router:Router,
+    private service:SocialAuthService
     ) { 
   
   }
 
+  CerrarSesion(){
+    localStorage.removeItem('user')
+    window.location.reload();
+  }
+
   ngOnInit(): void {
-    this.parse=(localStorage.getItem('Loged'));
-    this.isLoggedIn=JSON.parse(this.parse);
-    if(this.isLoggedIn){
-      const dialogRef = this.dialog.open(LoginComponent,{
+    this.data=(localStorage.getItem('user'));
+    this.user=JSON.parse(this.data);
+
+    if(!this.user){
+        this.dialog.open(LoginComponent,{
         disableClose: true 
      });
      }else{
-      this.router.navigate(['/das/Algoritmo']);
+      this.router.navigate(['/Algoritmo']);
      }
   }
 

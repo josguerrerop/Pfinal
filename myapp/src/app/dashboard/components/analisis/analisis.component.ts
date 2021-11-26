@@ -71,6 +71,8 @@ export class AnalisisComponent implements OnInit {
 
   realizaComunicacionHijo(event:any) {
     this.data = event;
+    console.log(this.data)
+    /*
       this.back.ConsultarVector(this.data.caso).subscribe(
         res => {
           this.vec = res;
@@ -79,6 +81,7 @@ export class AnalisisComponent implements OnInit {
           
         }
       )
+      */
   }
   
 }

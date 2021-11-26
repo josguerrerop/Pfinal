@@ -9,7 +9,7 @@
 
      <mat-divider></mat-divider>
 
-     <mat-list-item [routerLink]="'reportes'">
+     <mat-list-item [routerLink]="'Reportes'">
       <mat-icon mat-list-icon class="">bar_chart</mat-icon>
       <span *ngIf="expanded">Reportes</span>
      </mat-list-item>
@@ -41,17 +41,30 @@
    </mat-nav-list>
   </mat-sidenav>
 <mat-sidenav-content [ngClass]="{'disabled':expanded}">
-  <div>
-    <mat-toolbar  style="position: sticky;">
-      <div>
-      <mat-icon style="padding-right:20px;color:rgb(46, 43, 43);">fiber_manual_record</mat-icon>
-      Gestión de vulnerabilidad
-    </div>
-    <div>
-     <span>xd</span>
-    </div>
-
-    </mat-toolbar>
+  <div style="overflow: inherit;">
+    <mat-toolbar  style="position: sticky">
+      <span style="flex: 1 1 auto">Gestión de vulnerabilidad</span>
+    <span style="flex: 1 1 auto"></span>
+    <button mat-button [matMenuTriggerFor]="stationMenu" style="float: right; position: absolute;margin-top:10px;
+    top: 8px;
+    right: 16px;">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+      
+    </button>
+    <mat-menu #stationMenu="matMenu" style="height:300px;">
+      <div *ngIf="user">
+      <img src={{user.photoUrl}}  width="73px" height="73px" style="align-items:middle;margin:7px 100px">
+        <span style="padding-left:15px;padding-right: 5px;padding-top:10px;">{{user.name}}</span>
+        <h4 style="padding-left:10px;padding-right: 5px;padding-top:1px;">{{user.email}}</h4>
+        <button  mat-stroked-button mdbWavesEffect (click)="CerrarSesion()"
+        style="padding-left:100px;
+               padding-right: 90px;
+              padding-top:1px;">
+              Cerrar Sesión
+        </button>
+      </div>
+      </mat-menu>
+  </mat-toolbar>
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-content>

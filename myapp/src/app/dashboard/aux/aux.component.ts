@@ -11,24 +11,32 @@ import { BackendService } from 'src/app/services/Backend/backend.service';
 export class AuxComponent implements OnInit {
   @Output() datos = new EventEmitter<any>();
   
-  data:any;
+  private data:any;
   bar:boolean= false;
   caso =[
-    {val:'cinco'},
-    {val:'Veinticuatro'}
+    {val:'5'},
+    {val:'6'},
+    {val:'9'},
+    {val:'12'},
+    {val:'14'},
+    {val:'15'},
+    {val:'18'},
+    {val:'22'},
+    {val:'24'},
+    {val:'30'},
+    {val:'33'},
+    {val:'34'},
+    {val:'38'},
+    {val:'39'},
+    {val:'51'},
+    {val:'57'},
+    {val:'69'},
+    {val:'74'},
+    {val:'118'},
+    {val:'141'},
+    {val:'300'},
+    {val:'1354'},
   ];
-
-  arr:Array<Number[]>=[];
-  bus:Array<Number[]>=[];
-  gen:Array<Number[]>=[];
-  genC:Array<Number[]>=[];
-  RD:Array<Number[]>=[];
-  Tam:Number=0;
-  Recursos:Number=0;
-  Ataque_Lineas:Array<Number[]>=[];
-  Ataque_Generadores:Array<Number[]>=[];
-  case:string='';
-
 
   constructor(private matlabService:MatlabService,
               private location: Location, 
@@ -39,39 +47,48 @@ export class AuxComponent implements OnInit {
       console.log(this.location.path());
     } 
   }
- 
-  datosIniciales(self:any){
-    this.matlabService.GetresAsync(self).subscribe(
-      res => {
+
+  private getVectores(caso:string):any{
+    this.matlabService.SelectCase(parseInt(caso)).subscribe(
+      res=>{
         this.data=res;
-        localStorage.setItem('data', JSON.stringify(this.data));
-        this.arr=this.data.lhs[0].branch;
-        this.bus=this.data.lhs[0].bus;
-        this.gen=this.data.lhs[0].gen;
-        this.genC=this.data.lhs[0].gencost;
-        this.RD=this.data.lhs[1];
-        this.Tam=this.data.lhs[2];
-        this.Recursos=this.data.lhs[3];
-        this.Ataque_Lineas=this.data.lhs[4];
-        this.Ataque_Generadores=this.data.lhs[5];
-        this.bar=false;
-        this.data.caso =this.case;
-        this.datos.emit(this.data)
-      }
-    )
+        let obj:object = {
+          poblacion:this.data.lhs[7],
+          vector:this.data.lhs[6]
+         }
+         this.datos.emit(obj)
+    })
   }
 
+  private getEntradas(caso:string):any{
+    this.matlabService.SelectCase(parseInt(caso)).subscribe(
+      res=>{
+        this.data=res;
+        let datos:object={
+          branch:this.data.lhs[0].branch,
+          bus:this.data.lhs[0].bus,
+          gen:this.data.lhs[0].gen,
+          genC:this.data.lhs[0].gencost,
+          RD:this.data.lhs[1],
+          Tam:this.data.lhs[2],
+          Recursos:this.data.lhs[3],
+          Ataque_Lineas:this.data.lhs[4],
+          Ataque_Generadores:this.data.lhs[5]
+        }
+        this.datos.emit(datos)
+    })
+  }
 
   SelectCase(caso:string):void{
-    this.case= caso;
-      this.matlabService.SelectCase(caso).subscribe(
-        res=>{
-         let data:any = res;
-         data = data.self;
-         this.datosIniciales(data);
-      })
-
-     
+    
+      if(this.location.path()=='/Analisis'){
+        this.getVectores(caso);
     }
 
+    else 
+
+    if(this.location.path()=='/Algoritmo'){
+      this.getEntradas(caso);
+    }   
+  }
 }

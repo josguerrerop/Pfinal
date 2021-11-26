@@ -4,15 +4,9 @@
   <mat-tab label="Generación"> 
     <div class="container">
       <div class="row">
-        <div class="col col-sm-3" style="margin-left:2%;margin-top:2%;">
-    <mat-form-field appearance="fill">
-      <mat-label>Seleccione el caso</mat-label>
-   <mat-select>
-    <mat-option *ngFor="let option of caso" [value]="option.val" (click)="SelectCase(option.val)"  required>
-     {{option.val}}
-    </mat-option>
-   </mat-select>
-  </mat-form-field>
+        <div class="col col-sm-3" style="margin-left:0%;margin-top:2%;">
+ 
+          <app-aux (datos)="getEntradas($event)"> </app-aux>
 
   <button mat-stroked-button mdbWavesEffect (click)="GenerarVector()">Generar vector de interdicción</button> 
         </div>
@@ -48,9 +42,14 @@
           </tr>
         </thead>
       <tbody >
-          <tr *ngFor="let item of arr">
+     
+
+        <tr *ngFor="let item of branch">
             <td *ngFor="let x of item">{{x}}</td>
-          </tr>
+             </tr>
+     
+        
+         
       </tbody>
     </table>
   </div>
