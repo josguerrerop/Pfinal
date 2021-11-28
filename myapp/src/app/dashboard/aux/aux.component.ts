@@ -54,7 +54,10 @@ export class AuxComponent implements OnInit {
         this.data=res;
         let obj:object = {
           poblacion:this.data.lhs[7],
-          vector:this.data.lhs[6]
+          vector:this.data.lhs[6],
+          caso:this.data.lhs[0],
+          RD:this.data.lhs[1],
+          case:caso,
          }
          this.datos.emit(obj)
     })
@@ -65,6 +68,7 @@ export class AuxComponent implements OnInit {
       res=>{
         this.data=res;
         let datos:object={
+          caso:this.data.lhs[0],
           branch:this.data.lhs[0].branch,
           bus:this.data.lhs[0].bus,
           gen:this.data.lhs[0].gen,
@@ -73,7 +77,8 @@ export class AuxComponent implements OnInit {
           Tam:this.data.lhs[2],
           Recursos:this.data.lhs[3],
           Ataque_Lineas:this.data.lhs[4],
-          Ataque_Generadores:this.data.lhs[5]
+          Ataque_Generadores:this.data.lhs[5],
+          case:caso
         }
         this.datos.emit(datos)
     })

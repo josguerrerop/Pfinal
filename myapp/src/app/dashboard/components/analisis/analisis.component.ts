@@ -9,11 +9,16 @@ import { MatlabService } from 'src/app/services/Matlab/matlab.service';
 })
 export class AnalisisComponent implements OnInit {
 
-  data:any;
-  title:any='';
-  pob:any='';
-  vec:any;
+
+  vector:any='';
+  poblacion:any='';
+
+  case:string='';
   results:any;
+
+ caso:any;
+ RD:any;
+
   resultados:Array<number[]>=[];
   elemento:Array<number>=[];
   constructor(private back:BackendService,private Matlab:MatlabService) { }
@@ -24,13 +29,14 @@ export class AnalisisComponent implements OnInit {
 
   RealizarAnalisis(){
     this.Matlab.RealizarAnalisis(
-      this.data.lhs[0]
-      ,this.data.lhs[1],
-      this.title,
-      this.pob
+      this.caso,
+      this.RD,
+      this.vector,
+      this.poblacion
       ).subscribe(
       res=>{
         this.results=res;
+        console.log(res)
         for(let i=0;i<4;i++){
           let cost_tot=this.results.lhs[0].mwdata[i].Cost_tot;
           let cost_des=this.results.lhs[0].mwdata[i].Cost_des;
@@ -43,8 +49,8 @@ export class AnalisisComponent implements OnInit {
         let aux=this.resultados[2];
         this.resultados[2]=this.resultados[3];
         this.resultados[3]=aux
-        //console.log(res)
-        this.GetNodos()
+        console.log(res)
+        //this.GetNodos()
       }
     )
   }
@@ -54,7 +60,7 @@ export class AnalisisComponent implements OnInit {
    let nodo2= this.results.lhs[0].mwdata[1].nodos;
    let nodo3= this.results.lhs[0].mwdata[3].nodos;
    let nodo4= this.results.lhs[0].mwdata[2].nodos;
-   let caso =this.data.caso;
+   let caso =this.case;
    let obj ={
   nodo1,
   nodo2,
@@ -70,18 +76,12 @@ export class AnalisisComponent implements OnInit {
 
 
   realizaComunicacionHijo(event:any) {
-    this.data = event;
-    console.log(this.data)
-    /*
-      this.back.ConsultarVector(this.data.caso).subscribe(
-        res => {
-          this.vec = res;
-          this.title = this.vec[0].x;
-          this.pob=this.vec[0].p;
-          
-        }
-      )
-      */
+    this.case=event.case;
+    this.vector = event.vector;
+    this.poblacion=event.poblacion;
+    this.caso=event.caso;
+    this.RD=event.RD;
+    console.log(event)
   }
   
 }

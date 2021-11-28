@@ -11,7 +11,7 @@ export class MatlabService {
   
   private URL_ALGORITMO = "http://localhost:9909/poblacion/poblacion";
   
-  private URL_ANALISIS ="http://localhost:9910/Analisis/Analisis"
+  private URL_ANALISIS ="http://localhost:9910/completo/completo"
 
   constructor(private http: HttpClient) { }
 
@@ -39,8 +39,14 @@ GetresAsync(self:string){
                   Ataque_Generadores:Array<Number[]>
                   )
                   {
+                    console.log(RD)
+                    console.log(Tam)
+                    console.log(Recursos)
+                    console.log(Ataque_Lineas)
+                    console.log(Ataque_Generadores)
+
                     return this.http.post(this.URL_ALGORITMO,{ "nargout": 3,
-                   "rhs": [caso,RD,[Tam],[Recursos],Ataque_Lineas,Ataque_Generadores],
+                   "rhs": [caso,RD,[Tam],Recursos,Ataque_Lineas,Ataque_Generadores],
                    "outputFormat":{ "mode" : "small", "nanInfFormat" : "object" }
      }); 
     }

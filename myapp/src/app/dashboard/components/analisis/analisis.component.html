@@ -14,7 +14,7 @@
 <br>       
 <mat-form-field  appearance="legacy">
     <mat-select placeholder="Población de interdicción">
-        <mat-option *ngFor="let item of pob">
+        <mat-option *ngFor="let item of poblacion">
         {{item.join(' ')}}                           
     </mat-option>
         </mat-select>
@@ -23,7 +23,7 @@
                 <mat-form-field  appearance="legacy">
                     <mat-select placeholder=" Vector de interdicción"  >
                         <mat-option >
-                          {{title}}
+                          {{vector}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

@@ -17,10 +17,9 @@ export class AlgoritmoComponent implements OnInit {
 
 
  spinner:boolean = false;
-   data:any;
+   caso:Object={};
    resultado:any;
    bar:boolean= false;
-
 
    branch:Array<Number[]>=[];
    bus:Array<Number[]>=[];
@@ -56,25 +55,30 @@ export class AlgoritmoComponent implements OnInit {
 }
 
 getEntradas(event:any){
+this.caso=event.caso;
 this.branch=event.branch;
 this.bus=event.bus;
 this.gen=event.gen;
 this.genC=event.genC;
 this.RD=event.RD;
 this.Tam=event.Tam;
-this.Recursos=event.Ataque_Lineas;
+this.Recursos=event.Recursos;
 this.Ataque_Lineas =event.Ataque_Lineas;
 this.Ataque_Generadores=event.Ataque_Generadores;
+this.case=event.case
 }
 
   tr(){
     this.spinner=true;
     let startFrom = new Date().getMinutes();
     this.matlabService.GenerarVector(
-      this.data.lhs[0],
-      this.RD,this.Tam,
-      this.Recursos,this.Ataque_Lineas,this.Ataque_Generadores)
-      .subscribe(
+      this.caso,
+      this.RD,
+      this.Tam,
+      this.Recursos,
+      this.Ataque_Lineas,
+      this.Ataque_Generadores
+      ).subscribe(
         res=>{
           try {
             let data: any;
