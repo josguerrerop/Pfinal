@@ -39,12 +39,6 @@ GetresAsync(self:string){
                   Ataque_Generadores:Array<Number[]>
                   )
                   {
-                    console.log(RD)
-                    console.log(Tam)
-                    console.log(Recursos)
-                    console.log(Ataque_Lineas)
-                    console.log(Ataque_Generadores)
-
                     return this.http.post(this.URL_ALGORITMO,{ "nargout": 3,
                    "rhs": [caso,RD,[Tam],Recursos,Ataque_Lineas,Ataque_Generadores],
                    "outputFormat":{ "mode" : "small", "nanInfFormat" : "object" }
@@ -53,7 +47,7 @@ GetresAsync(self:string){
 
     RealizarAnalisis(caso:Object,RD:Array<Number[]>,vec:Array<Number[]>,pob:Array<Number[]>,){
       return this.http.post(this.URL_ANALISIS,{ "nargout": 3,
-      "rhs": [caso,RD,vec,pob],
+      "rhs": [caso,RD,[vec],pob],
       "outputFormat":{ "mode" : "small", "nanInfFormat" : "object" }
     });
 }

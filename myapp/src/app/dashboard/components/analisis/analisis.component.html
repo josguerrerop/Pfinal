@@ -2,59 +2,143 @@
 <mat-tab-group #tabs style="margin-left:2%;width:85%;margin-top:3%;">
 
     <mat-tab label="Análisis"> 
+      <div class="container">
+        <div class="row">
+          <div class="col col-sm-3" style="margin-left:0%;margin-top:2%;">
+            
+    <app-aux (datos)="realizaComunicacionHijo($event)"> </app-aux>
+    <br>       
+    <mat-form-field  appearance="legacy" style="height:50px;width:205px">
+        <mat-select placeholder="Generadores mas atacados">
+            <mat-option *ngFor="let item of generadores">
+            {{item}}                           
+        </mat-option>
+            </mat-select>
+        </mat-form-field>     
+    <br>
+                    <mat-form-field  appearance="legacy">
+                        <mat-select placeholder="Lineas mas atacadas"  >
+                            <mat-option *ngFor="let item of lineasAtacas">
+                              {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+    <br>
+    <div>
+        <button mat-stroked-button mdbWavesEffect (click)="RealizarAnalisis()">Realizar análisis</button>             
+    </div>
+          </div>
+          <div class="col-lg border">
+           <br>
+            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+            width="100%">
+              <thead>							
+                  <tr>
+                    <th>Escenario</th>
+                    <th>Costo operación ($/MWH)</th>
+                    <th>Costo deslastre ($/MWH)</th>
+                    <th>U1</th>
+                    <th>U2</th>
+                    <th>U3</th>
+                    <th>Resilencia</th>
+                  </tr>
+                </thead>
+              <tbody>
+                      <tr *ngFor="let items of resultados">
+                    <td *ngFor="let item of items">{{item}}</td>
+                  </tr>
+              </tbody>
+            </table>
+            
+          </div>
+        </div>
+      </div>
     </mat-tab>
+
+    <mat-tab label="Recuperación" >
+      <div class="container">
+        <div class="row">
+          <div class="col col-sm-3" style="margin-left:0%;margin-top:2%;">
+    <br>       
+    <mat-expansion-panel>
+      <mat-expansion-panel-header [collapsedHeight]="'80px'">
+          <mat-panel-description>
+              Antiguo vector
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div style="width: 100%;overflow-x: auto;">	
+      <table class="table table-striped table-bordered table-sm" >
+        <tbody >
+            <tr>
+              <td *ngFor="let item of vector">{{item}}</td>
+            </tr>
+        </tbody>
+      </table>	
+      </div>						 
+      </mat-expansion-panel>
+    <br>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header [collapsedHeight]="'80px'">
+          <mat-panel-description>
+              Nuevo vector
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div style="width: 100%;overflow-x: auto;">	
+      <table class="table table-striped table-bordered table-sm" >
+        <tbody >
+            <tr>
+              <td *ngFor="let item of nuevoVec">{{item}}</td>
+            </tr>
+        </tbody>
+      </table>	
+      </div>						 
+      </mat-expansion-panel>         
+    <br>
+    
+          </div>
+          <div class="col-md " style="padding-top: 25px;">
+           <br>
+            
+           <table  class="table table-striped table-bordered table-sm" cellspacing="0"
+            width="100%">
+            <tr>
+            <th>Costo operación ($/MWH):</th>
+            <td>{{Costooperacion}}</td>
+            </tr>
+
+            <tr>
+            <th>Costo deslastre ($/MWH):</th>
+            <td>{{Costodeslastre}}</td>
+            </tr>
+
+            <tr>
+              <th>U1:</th>
+              <td>{{U1}}</td>
+              </tr>
+
+              <tr>
+                <th>U2:</th>
+                <td>{{U2}}}</td>
+                </tr>
+
+                <tr>
+                  <th>U3:</th>
+                  <td>{{U3}}</td>
+                  </tr>
+            
+            </table>
+           <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+ {{mensaje1}}
+</div>
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{mensaje3}}
+</div>
+          </div>
+        </div>
+      </div>
+       </mat-tab>
 </mat-tab-group>
 
 
-<div class="container">
-    <div class="row">
-      <div class="col col-sm-3" style="margin-left:0%;margin-top:2%;">
-        
-<app-aux (datos)="realizaComunicacionHijo($event)"> </app-aux>
-<br>       
-<mat-form-field  appearance="legacy">
-    <mat-select placeholder="Población de interdicción">
-        <mat-option *ngFor="let item of poblacion">
-        {{item.join(' ')}}                           
-    </mat-option>
-        </mat-select>
-    </mat-form-field>     
-<br>
-                <mat-form-field  appearance="legacy">
-                    <mat-select placeholder=" Vector de interdicción"  >
-                        <mat-option >
-                          {{vector}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-<br>
-<div>
-    <button mat-stroked-button mdbWavesEffect (click)="RealizarAnalisis()">Realizar análisis</button>             
-</div>
-      </div>
-      <div class="col-lg border">
-       <br>
-        <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
-        width="100%">
-          <thead>							
-              <tr>
-                <th>Costo operación ($/MWH)</th>
-                <th>COSTO DESLASTRE ($/MWH)</th>
-                <th>U1</th>
-                <th>U2</th>
-                <th>U3</th>
-              </tr>
-            </thead>
-          <tbody >
-             
-                  <tr *ngFor="let items of resultados">
-                <td *ngFor="let item of items">{{item}}</td>
-              </tr>
-              
-              
-          </tbody>
-        </table>
-
-      </div>
-    </div>
-  </div>

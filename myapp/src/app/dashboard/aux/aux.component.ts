@@ -40,6 +40,7 @@ export class AuxComponent implements OnInit {
 
   constructor(private matlabService:MatlabService,
               private location: Location, 
+              private back: BackendService
               ) { }
 
   ngOnInit(): void {
@@ -62,6 +63,11 @@ export class AuxComponent implements OnInit {
          this.datos.emit(obj)
     })
   }
+
+private getFlujos(caso:string){
+  //this.back.
+}
+
 
   private getEntradas(caso:string):any{
     this.matlabService.SelectCase(parseInt(caso)).subscribe(
@@ -95,5 +101,11 @@ export class AuxComponent implements OnInit {
     if(this.location.path()=='/Algoritmo'){
       this.getEntradas(caso);
     }   
+
+    else 
+
+    if(this.location.path()=='/Flujo'){
+      this.getFlujos(caso);
+    }  
   }
 }

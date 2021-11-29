@@ -23,5 +23,9 @@ export class BackendService {
 
   }
 
+  GetFlujo(caso:string){
+   
+  }
+
   constructor(private http: HttpClient) { }
 }

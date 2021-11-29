@@ -15,7 +15,7 @@
   <mat-expansion-panel>
   <mat-expansion-panel-header [collapsedHeight]="'100px'">
       <mat-panel-title>
-          Caso 5
+          Caso {{case}}
       </mat-panel-title>
       <mat-panel-description>
           Caso de desarrollo 
@@ -215,16 +215,18 @@
       <mat-spinner></mat-spinner>
     </div>
 
-
-    <div class="container">
-      <table class="table table-striped table-bordered">
-        <thead>
-          <td *ngFor="let item of Vector_Interdiccion">
-              {{item}}
-          </td>
-      </thead>
-      </table>
-  </div>
+  <!--
+      <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+            width="100%">
+              <tbody>
+                      <tr *ngFor="let items of resultados">
+                    <td *ngFor="let item of items">{{item}}</td>
+                  </tr>
+              </tbody>
+            </table>
+  -->
+ 
+    
   </mat-tab>
 
 </mat-tab-group>

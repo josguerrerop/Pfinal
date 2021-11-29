@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatlabService } from 'src/app/services/Matlab/matlab.service';
 import {MatDialog} from '@angular/material/dialog';
-import { PobInterdiccionComponent } from './pob-interdiccion/pob-interdiccion.component';
 import { ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs'; 
 import { BackendService } from 'src/app/services/Backend/backend.service';
+import { DialogComponent } from '../../dialog/dialog.component';
 @Component({
   selector: 'app-algoritmo',
   templateUrl: './algoritmo.component.html',
@@ -31,12 +31,11 @@ export class AlgoritmoComponent implements OnInit {
    Ataque_Lineas:Array<Number[]>=[];
    Ataque_Generadores:Array<Number[]>=[];
 
-   VectorInterdiccion:Array<Number>=[];
-   PoblacionInterdiccion:Array<Number[]>=[];
    Vector_Interdiccion :any=[];
    Pob_Interdiccion :any=[[Number]];
 
-  case:string='';
+   case:string='';
+   yetVec:boolean=false;
    public pet:Boolean=false;
 
 
@@ -99,7 +98,7 @@ this.case=event.case
 preguntar(){
   this.delay()
   this.dialogo
-    .open(PobInterdiccionComponent, {
+    .open(DialogComponent, {
       data: `¿Desea guardar resultados?`
     }).afterClosed().subscribe((confirmado) => {
       if (confirmado) {
@@ -120,12 +119,33 @@ console.log(obj)
 
   GenerarVector():void{
     this.dialogo
-    .open(PobInterdiccionComponent, {
+    .open(DialogComponent, {
       data: `¿Desea generar vector de interdicción?`
     }).afterClosed().subscribe((confirmado) => {
-      if (confirmado) {
-        this.tabGroup.selectedIndex = 1;
-        this.tr();
+      if (confirmado &&this.case!='') {
+        this.backService.ConsultarVector(this.case).subscribe(
+          res =>{
+            let Res:any=res
+            if(Res.length!=0){
+            this.dialogo.open(DialogComponent,{
+              data: `ya se generó un vector de interdicción ¿Desea ver resultados?`
+            }).afterClosed().subscribe((valor)=>{
+              if(valor){
+                
+                this.yetVec=true;
+                this.resultado=res;
+                this.Vector_Interdiccion=this.resultado;
+                this.tabGroup.selectedIndex = 1;
+              }
+            })
+            }else{
+              this.tabGroup.selectedIndex = 1;
+              this.tr();
+            }
+          }
+        )
+        //this.tabGroup.selectedIndex = 1;
+        //this.tr();
       }
     });
   }
