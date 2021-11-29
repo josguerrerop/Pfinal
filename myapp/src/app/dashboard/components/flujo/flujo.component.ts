@@ -11,8 +11,21 @@ export class FlujoComponent implements OnInit {
 
   constructor(private NodeService:BackendService) {}
 
+  base:Array<number[]>=[];
+  RD:Array<number[]>=[];
+  GD:Array<number[]>=[];
+  RDGD:Array<number[]>=[];
+
+
   ngOnInit(): void {
     //this.NodeService.GuardarFlujo
   }
 
+  getFlujos(event:any){
+ this.base=event.nodo1;
+ this.GD=event.nodo2;
+ this.RD=event.nodo4;
+ this.RDGD=event.nodo3;
+console.log(this.base,this.RD,this.GD,this.RDGD)
+  }
 }

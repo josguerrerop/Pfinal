@@ -9,6 +9,7 @@ export class BackendService {
   private URI1 = "http://localhost:3000/ALgoritmoG/";
   private URI2 = "http://localhost:3000/ALgoritmoG/Vector";
   private URL_FLUJO ="http://localhost:3000/ALgoritmoG/Results";
+  private URL_FLUJOS ="http://localhost:3000/ALgoritmoG/Flujo";
 
   ServicioAG(Vector:Object){
     return this.http.post(this.URI1 ,{Vector});
@@ -24,7 +25,7 @@ export class BackendService {
   }
 
   GetFlujo(caso:string){
-   
+    return this.http.post(this.URL_FLUJOS ,{caso});
   }
 
   constructor(private http: HttpClient) { }

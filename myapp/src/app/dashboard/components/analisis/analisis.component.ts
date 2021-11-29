@@ -137,9 +137,10 @@ recuperacion(result:any){
   nodo2,
   nodo3,
   nodo4,
-  caso
    }
-   this.back.GuardarFlujo(obj);
+
+
+   this.back.GuardarFlujo({obj,caso}).subscribe(res=>{});
    console.log(obj)
  }
 

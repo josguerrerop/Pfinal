@@ -65,7 +65,10 @@ export class AuxComponent implements OnInit {
   }
 
 private getFlujos(caso:string){
-  //this.back.
+  this.back.GetFlujo(caso).subscribe(res=>{
+    let obj:any =res;
+    this.datos.emit(obj[0].x.obj)
+  })
 }
 
 

@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
           <div class="col col-sm-3" style="margin-left:0%;margin-top:2%;">
-            <app-aux></app-aux>
+            <app-aux (datos)="getFlujos($event)"></app-aux>
           </div>
           <div class="col-sm ">
             <br>
@@ -34,10 +34,10 @@
       </div>
     </mat-tab>
 
-    <mat-tab label="RD"> 
+    <mat-tab label="GD"> 
     </mat-tab>
 
-    <mat-tab label="GD"> 
+    <mat-tab label="RD"> 
     </mat-tab>
 
     <mat-tab label="RD y GD"> 
