@@ -26,6 +26,5 @@ export class FlujoComponent implements OnInit {
  this.GD=event.nodo2;
  this.RD=event.nodo4;
  this.RDGD=event.nodo3;
-console.log(this.base,this.RD,this.GD,this.RDGD)
   }
 }

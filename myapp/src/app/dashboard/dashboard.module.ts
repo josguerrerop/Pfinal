@@ -24,6 +24,8 @@ import { AnalisisComponent } from './components/analisis/analisis.component';
 import { AuxComponent } from './aux/aux.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { DialogComponent } from './dialog/dialog.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 
 
@@ -39,6 +41,7 @@ import { DialogComponent } from './dialog/dialog.component';
     DialogComponent,
   ],
   imports: [
+    NgxChartsModule,
     MatMenuModule,
     MatProgressSpinnerModule,
     MatTabsModule,

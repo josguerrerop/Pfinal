@@ -67,7 +67,14 @@ export class AuxComponent implements OnInit {
 private getFlujos(caso:string){
   this.back.GetFlujo(caso).subscribe(res=>{
     let obj:any =res;
-    this.datos.emit(obj[0].x.obj)
+    this.datos.emit(obj[0].x)
+  })
+}
+
+private getDatos(caso:string){
+  this.back.GetFlujo(caso).subscribe(res=>{
+    let obj:any =res;
+    this.datos.emit(obj)
   })
 }
 
@@ -109,6 +116,12 @@ private getFlujos(caso:string){
 
     if(this.location.path()=='/Flujo'){
       this.getFlujos(caso);
+    }  
+
+    else 
+
+    if(this.location.path()=='/Reportes'){
+      this.getDatos(caso);
     }  
   }
 }

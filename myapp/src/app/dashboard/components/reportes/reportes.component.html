@@ -1,2 +1,54 @@
+<mat-tab-group #tabs style="margin-left:2%;width:85%;margin-top:3%;">
 
-<p>HOME</p>
+    <mat-tab label="Reportes"> 
+      <div class="container">
+        <div class="row">
+          <div class="col col-sm-3" style="margin-left:0%;margin-top:2%;">
+            
+    <app-aux (datos)="setDatos($event)"> </app-aux>
+          </div>
+
+          
+          <div class="col-sm border">
+           
+            <ngx-charts-line-chart
+  [view]="view"
+  
+  [legend]="legend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxis]="xAxis"
+  [yAxis]="yAxis"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [timeline]="timeline"
+  [results]="multi"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)"
+  >
+</ngx-charts-line-chart>
+<ngx-charts-bar-vertical-2d
+  [view]="view"
+  
+  [results]="nodos"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="XA"
+  [yAxisLabel]="YA"
+  [legendTitle]="legendTitle"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)">
+</ngx-charts-bar-vertical-2d>
+          </div>
+
+        </div>
+      </div>
+    </mat-tab>
+</mat-tab-group>
+

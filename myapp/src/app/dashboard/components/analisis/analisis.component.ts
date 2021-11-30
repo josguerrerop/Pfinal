@@ -31,7 +31,7 @@ export class AnalisisComponent implements OnInit {
   U2:number=0;
   U3:number=0;
   mensaje3:String='';
-
+ resi:Array<number>=[];
 
  
   
@@ -99,6 +99,8 @@ recuperacion(result:any){
           let u1=this.results.lhs[0].mwdata[i].U1;
           let u2=this.results.lhs[0].mwdata[i].U2;
 
+           this.resi.push(u1);
+
           this.elemento=[
             "Escenario "+this.escenario[i],
           cost_tot.toFixed(4),
@@ -132,6 +134,7 @@ recuperacion(result:any){
    let nodo3= this.results.lhs[0].mwdata[3].nodos;
    let nodo4= this.results.lhs[0].mwdata[2].nodos;
    let caso =this.case;
+   let u = this.resi;
    let obj ={
   nodo1,
   nodo2,
@@ -140,10 +143,13 @@ recuperacion(result:any){
    }
 
 
-   this.back.GuardarFlujo({obj,caso}).subscribe(res=>{});
+   this.back.GuardarFlujo({obj,caso,u}).subscribe(res=>{});
    console.log(obj)
  }
 
+guardarResiliencia(){
+
+}
 
   realizaComunicacionHijo(event:any) {
     this.case=event.case;
