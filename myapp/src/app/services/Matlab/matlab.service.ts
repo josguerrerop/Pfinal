@@ -22,7 +22,7 @@ GetresAsync(self:string){
   return this.http.get(URL);
 }
 
-  SelectCase(caso:number){
+  SelectCase(caso:number){//cambiar por getEntradas
     return this.http.post(this.URL_CARACTERISTICAS,{ "nargout": 9,
     "rhs": [caso],
     "outputFormat":{ "mode" : "small", "nanInfFormat" : "string" }
