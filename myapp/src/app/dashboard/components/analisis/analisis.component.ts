@@ -158,7 +158,7 @@ guardarResiliencia(){
     console.log(event)
    
 
-    this.back.ConsultarVector(this.case).subscribe(
+    this.back.consultarVector(this.case).subscribe(
       res=>{
         let obj:any =res;
         this.vector = obj[0].x;

@@ -31,7 +31,7 @@ GetresAsync(self:string){
     }
     
 
-    GenerarVector(caso:Object,
+    generarVector(caso:Object,
                   RD:Array<Number[]>,
                   Tam:Number,
                   Recursos:Number,

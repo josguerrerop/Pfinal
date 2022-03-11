@@ -100,7 +100,7 @@ private getDatos(caso:string){
     })
   }
 
-  SelectCase(caso:string):void{
+  selectCase(caso:string):void{
     
       if(this.location.path()=='/Analisis'){
         this.getVectores(caso);

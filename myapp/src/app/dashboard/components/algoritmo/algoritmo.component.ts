@@ -70,7 +70,7 @@ this.case=event.case
   tr(){
     this.spinner=true;
     let startFrom = new Date().getMinutes();
-    this.matlabService.GenerarVector(
+    this.matlabService.generarVector(
       this.caso,
       this.RD,
       this.Tam,
@@ -117,13 +117,13 @@ console.log(obj)
     });
 }
 
-  GenerarVector():void{
+  generarVector():void{
     this.dialogo
     .open(DialogComponent, {
       data: `¿Desea generar vector de interdicción?`
     }).afterClosed().subscribe((confirmado) => {
       if (confirmado &&this.case!='') {
-        this.backService.ConsultarVector(this.case).subscribe(
+        this.backService.consultarVector(this.case).subscribe(
           res =>{
             let Res:any=res
             if(Res.length!=0){
@@ -131,11 +131,13 @@ console.log(obj)
               data: `ya se generó un vector de interdicción ¿Desea ver resultados?`
             }).afterClosed().subscribe((valor)=>{
               if(valor){
-                
+                //console.log(Res[0])
                 this.yetVec=true;
-                this.resultado=res;
-                this.Vector_Interdiccion=this.resultado;
+                this.Vector_Interdiccion=Res[0].x;
+                this.Pob_Interdiccion= Res[0].p;
                 this.tabGroup.selectedIndex = 1;
+                console.log(this.Vector_Interdiccion)
+                console.log(this.Pob_Interdiccion)
               }
             })
             }else{

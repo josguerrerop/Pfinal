@@ -7,7 +7,7 @@ import {HttpClient } from '@angular/common/http';
 export class BackendService {
 
   private URI1 = "http://localhost:3000/ALgoritmoG/";
-  private URI2 = "http://localhost:3000/ALgoritmoG/Vector";
+  private getVector = "http://localhost:3000/Vector";
   private URL_FLUJO ="http://localhost:3000/ALgoritmoG/Results";
   private URL_FLUJOS ="http://localhost:3000/ALgoritmoG/Flujo";
 
@@ -15,8 +15,8 @@ export class BackendService {
     return this.http.post(this.URI1 ,{Vector});
   }
 
-  ConsultarVector(caso:string){
-    return this.http.post(this.URI2 ,{caso});
+  consultarVector(caso:string){
+    return this.http.post(this.getVector ,{caso});
   }
 
   GuardarFlujo(obj:object){
