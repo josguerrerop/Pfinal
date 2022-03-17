@@ -45,7 +45,7 @@ GetresAsync(self:string){
      }); 
     }
 
-    RealizarAnalisis(caso:Object,RD:Array<Number[]>,vec:Array<Number[]>,pob:Array<Number[]>,){
+    RealizarAnalisis(caso:Object,RD:Array<Number[]>,vec:any,pob:Array<Number[]>){
       return this.http.post(this.URL_ANALISIS,{ "nargout": 3,
       "rhs": [caso,RD,[vec],pob],
       "outputFormat":{ "mode" : "small", "nanInfFormat" : "object" }

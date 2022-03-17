@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BackendService } from 'src/app/services/Backend/backend.service';
 import { MatlabService } from 'src/app/services/Matlab/matlab.service';
-
+import { DialogComponent } from '../../dialog/dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {Router} from "@angular/router"
 
 @Component({
   selector: 'app-analisis',
@@ -32,13 +34,14 @@ export class AnalisisComponent implements OnInit {
   U3:number=0;
   mensaje3:String='';
  resi:Array<number>=[];
-
+ spinner:boolean=false;
  
   
 
   constructor(private back:BackendService,
               private Matlab:MatlabService,
-              
+              private dialogo:MatDialog,
+              private router:Router,
               ) { }
   
   ngOnInit(): void {
@@ -79,7 +82,8 @@ recuperacion(result:any){
 }
 
 
-  RealizarAnalisis(){
+  realizarAnalisis(){
+    this.spinner=true;
     this.Matlab.RealizarAnalisis(
       this.caso,
       this.RD,
@@ -87,10 +91,10 @@ recuperacion(result:any){
       this.poblacion
       ).subscribe(
       res=>{
+        this.spinner=false;
         this.results=res;
-        
-        console.log(res)
         this.lineasAtacas=this.results.lhs[1].mwdata[0].mwdata;
+        
         this.generadores=this.results.lhs[1].mwdata[1].mwdata;
         for(let i=0;i<4;i++){
           let cost_tot=this.results.lhs[0].mwdata[i].Cost_tot;
@@ -142,27 +146,58 @@ recuperacion(result:any){
   nodo4,
    }
 
-
-   this.back.GuardarFlujo({obj,caso,u}).subscribe(res=>{});
-   console.log(obj)
+  if(this.getFlujos(caso)){
+    this.back.GuardarFlujo({obj,caso,u}).subscribe(res=>{
+      console.log(res)
+    });
+  }
  }
 
-guardarResiliencia(){
-
+getFlujos(caso:string):boolean{
+let conf:boolean=false;
+this.back.getFlujo(caso).subscribe(
+  res=>{
+    let Res:any = res;
+    if(Res!=0){
+      console.log(res)
+    }
+    else{
+      this.dialogo
+      .open(DialogComponent, {
+        data: `¿Guardar resultados?`
+      }).afterClosed().subscribe((confirmado) => {
+        if(confirmado){
+          conf=confirmado;
+        }
+      })
+    }
+  }
+)
+return conf;
 }
 
-  realizaComunicacionHijo(event:any) {
+  getEntradas(event:any) {
     this.case=event.case;
     this.caso=event.caso;
     this.RD=event.RD;
-    console.log(event)
-   
 
     this.back.consultarVector(this.case).subscribe(
       res=>{
-        let obj:any =res;
-        this.vector = obj[0].x;
-        this.poblacion=obj[0].p;
+        let Res:any= res;
+        if(Res.length!=0){
+        this.vector = Res[0].x;
+        this.poblacion=Res[0].p;
+        console.log(this.poblacion)
+        }else{
+          this.dialogo
+    .open(DialogComponent, {
+      data: `No se ha generado vector de interdicción ¿Desea generar un vector de interdicción?`
+    }).afterClosed().subscribe((confirmado) => {
+      if(confirmado){
+      this.router.navigate(['/Algoritmo'])
+      }
+    })
+        }
       }
     )
   }

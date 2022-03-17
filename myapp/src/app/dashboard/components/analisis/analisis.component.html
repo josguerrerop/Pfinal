@@ -2,11 +2,12 @@
 <mat-tab-group #tabs style="margin-left:2%;width:85%;margin-top:3%;">
 
     <mat-tab label="Análisis"> 
+     
       <div class="container">
         <div class="row">
           <div class="col col-sm-3" style="margin-left:0%;margin-top:2%;">
             
-    <app-aux (datos)="realizaComunicacionHijo($event)"> </app-aux>
+    <app-aux (datos)="getEntradas($event)"> </app-aux>
     <br>       
     <mat-form-field  appearance="legacy" style="height:50px;width:205px">
         <mat-select placeholder="Generadores mas atacados">
@@ -25,13 +26,14 @@
                     </mat-form-field>
     <br>
     <div>
-        <button mat-stroked-button mdbWavesEffect (click)="RealizarAnalisis()">Realizar análisis</button>             
+        <button mat-stroked-button mdbWavesEffect (click)="realizarAnalisis()">Realizar análisis</button>             
     </div>
           </div>
           <div class="col-lg border">
            <br>
+           
             <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
-            width="100%">
+            width="100%" style="justify-content: center;">
               <thead>							
                   <tr>
                     <th>Escenario</th>
@@ -48,13 +50,16 @@
                     <td *ngFor="let item of items">{{item}}</td>
                   </tr>
               </tbody>
+              
             </table>
-            
+            <div class="spinner-wrapper" *ngIf="spinner">
+              <mat-spinner></mat-spinner>
+            </div>
           </div>
         </div>
+
       </div>
     </mat-tab>
-
     <mat-tab label="Recuperación" >
       <div class="container">
         <div class="row">

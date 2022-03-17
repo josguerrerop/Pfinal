@@ -10,6 +10,18 @@
     margin-bottom: 15px;
   }
 
+  .spinner-wrapper {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+  }
+  
+  .mat-spinner::ng-deep circle {
+
+    stroke: #7a7a7a;
+    position: absolute;
+    }
+
   .closebtn {
     margin-left: 15px;
     color: white;
