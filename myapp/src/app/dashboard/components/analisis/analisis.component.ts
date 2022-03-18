@@ -78,7 +78,6 @@ recuperacion(result:any){
   this.U1=this.results.lhs[2].mwdata[1].U1
   this.U2=this.results.lhs[2].mwdata[1].U2
   this.U3=this.results.lhs[2].mwdata[1].U
-  console.log(this.Costooperacion,this.Costodeslastre,this.U1,this.U3,this.U2)
 }
 
 
@@ -146,35 +145,26 @@ recuperacion(result:any){
   nodo4,
    }
 
-  if(this.getFlujos(caso)){
-    this.back.GuardarFlujo({obj,caso,u}).subscribe(res=>{
-      console.log(res)
-    });
-  }
+   this.back.getFlujo(caso).subscribe(
+    res=>{
+      let Res:any = res;
+      console.log(Res.length)
+      if(Res.length!=0){
+      }
+      else{
+        this.dialogo
+        .open(DialogComponent, {
+          data: `¿Guardar resultados?`
+        }).afterClosed().subscribe((confirmado) => {
+          if(confirmado){
+            this.back.GuardarFlujo({obj,caso,u}).subscribe(res=>{});
+          }
+        })
+      }
+    }
+  )
  }
 
-getFlujos(caso:string):boolean{
-let conf:boolean=false;
-this.back.getFlujo(caso).subscribe(
-  res=>{
-    let Res:any = res;
-    if(Res!=0){
-      console.log(res)
-    }
-    else{
-      this.dialogo
-      .open(DialogComponent, {
-        data: `¿Guardar resultados?`
-      }).afterClosed().subscribe((confirmado) => {
-        if(confirmado){
-          conf=confirmado;
-        }
-      })
-    }
-  }
-)
-return conf;
-}
 
   getEntradas(event:any) {
     this.case=event.case;
