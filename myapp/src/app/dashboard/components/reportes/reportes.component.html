@@ -6,14 +6,11 @@
           <div class="col col-sm-3" style="margin-left:0%;margin-top:2%;">
             
     <app-aux (datos)="setDatos($event)"> </app-aux>
-          </div>
-
-          
-          <div class="col-sm border">
+         
            
             <ngx-charts-line-chart
-  [view]="view"
-  
+  (window:resize)="onResize($event)"
+  [view]="[500,400]"
   [legend]="legend"
   [showXAxisLabel]="showXAxisLabel"
   [showYAxisLabel]="showYAxisLabel"
@@ -28,6 +25,7 @@
   (deactivate)="onDeactivate($event)"
   >
 </ngx-charts-line-chart>
+<!--
 <ngx-charts-bar-vertical-2d
   [view]="view"
   
@@ -45,6 +43,8 @@
   (activate)="onActivate($event)"
   (deactivate)="onDeactivate($event)">
 </ngx-charts-bar-vertical-2d>
+-->
+
           </div>
 
         </div>
