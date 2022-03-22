@@ -22,8 +22,8 @@ export class ReportesComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'tiempo';
-  yAxisLabel: string = 'carga atendida';
+  xAxisLabel: string = 'Tiempo';
+  yAxisLabel: string = '% Carga atendida';
   timeline: boolean = true;
   showLegend: boolean = false;
   XA: string = 'Country';
