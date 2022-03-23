@@ -1,14 +1,11 @@
-<mat-tab-group #tabs style="margin-left:2%;width:85%;margin-top:3%;">
+<mat-tab-group #tabs style="margin-left:2%;width:100%;margin-top:3%;">
 
     <mat-tab label="Reportes"> 
       <div class="container">
         <div class="row">
-          <div class="col col-sm-3" style="margin-left:0%;margin-top:2%;">
-            
-    <app-aux (datos)="setDatos($event)"> </app-aux>
-         
-           
-            <ngx-charts-line-chart
+          <div class="col" style="margin-left:-5%;margin-top:2%;">
+           <app-aux (datos)="setDatos($event)"> </app-aux>
+   <ngx-charts-line-chart
   (window:resize)="onResize($event)"
   [view]="[500,400]"
   [legend]="legend"
@@ -23,12 +20,16 @@
   (select)="onSelect($event)"
   (activate)="onActivate($event)"
   (deactivate)="onDeactivate($event)"
+  [legendTitle]="'Casos:'"
   >
 </ngx-charts-line-chart>
-<!--
+          </div>
+
+          <div class="col" style="margin-left:0%;margin-top:8%;">
+
 <ngx-charts-bar-vertical-2d
-  [view]="view"
-  
+(window:resize)="onResize($event)"
+  [view]="[500,350]"
   [results]="nodos"
   [gradient]="gradient"
   [xAxis]="showXAxis"
@@ -43,7 +44,7 @@
   (activate)="onActivate($event)"
   (deactivate)="onDeactivate($event)">
 </ngx-charts-bar-vertical-2d>
--->
+
 
           </div>
 

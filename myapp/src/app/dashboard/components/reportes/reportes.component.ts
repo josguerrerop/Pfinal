@@ -13,8 +13,6 @@ export class ReportesComponent implements OnInit {
 
   
   view: any = [500, 300];
-
-  // options
   legend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
@@ -26,8 +24,8 @@ export class ReportesComponent implements OnInit {
   yAxisLabel: string = '% Carga atendida';
   timeline: boolean = true;
   showLegend: boolean = false;
-  XA: string = 'Country';
-  YA: string = 'Population';
+  XA: string = 'Nodos';
+  YA: string = '% Carga atendida';
   legendTitle: string = 'Years';
   showXAxis: boolean = true;
   showYAxis: boolean = true;
@@ -40,7 +38,7 @@ export class ReportesComponent implements OnInit {
   U1caseGD:number=0;
   U1caseBASE:number=0;
   U1caseRDGD:number=0;
-
+  obj:any;
   ngOnInit(): void{
 
   }
@@ -49,8 +47,41 @@ export class ReportesComponent implements OnInit {
     this.view = [event.target.innerWidth-20, 400];
 }
 
+setDatosNodos(){
+  
+  console.log(this.obj[0].x)
+ let nodes:any = [];
+
+  for(let i=0;i<this.obj[0].x.nodo1.length;i++){
+  let obj = {
+    "name": this.obj[0].x.nodo1[i][0],
+    "series": [
+      {
+        "name": "Base",
+        "value": this.obj[0].x.nodo1[i][5]
+      },
+      {
+        "name": "GD",
+        "value": this.obj[0].x.nodo2[i][5]
+      },
+      {
+        "name": "RD Y GD",
+        "value": this.obj[0].x.nodo3[i][5]
+      },
+      {
+        "name": "RD",
+        "value": this.obj[0].x.nodo4[i][5]
+      },
+    ]
+  }
+  nodes.push(obj);
+}
+this.nodos=nodes;
+
+}
+
 setDatos(event:any){
-console.log(event)
+  this.obj=event;
 this.U1caseRD=event[0].u[0]*100;
 this.U1caseGD=event[0].u[1]*100;
 this.U1caseBASE=event[0].u[3]*100;
@@ -145,6 +176,7 @@ this.multi = [
     ]
   }
 ];
+this.setDatosNodos();
 }
 
 multi:Object = [
@@ -168,98 +200,6 @@ multi:Object = [
 ];
 
  
-
-/*
-  multi:Object = [
-    {
-      "name": "Original",
-      "series": [
-        {
-          "name": "1",
-          "value": 100
-        },
-        {
-          "name": "2",
-          "value": 100
-        },
-        {
-          "name": "3",
-          "value": 100
-        }
-      ]
-    },
-
-    {
-      "name": "GD",
-      "series": [
-        {
-          "name": "1",
-          "value": 100
-        },
-        {
-          "name": "2",
-          "value": this.U1caseGD
-        },
-        {
-          "name": "3",
-          "value": this.U1caseGD
-        }
-      ]
-    },
-
-    {
-      "name": "RD",
-      "series": [
-        {
-          "name": "1",
-          "value": 100
-        },
-        {
-          "name": "2",
-          "value": this.U1caseRD
-        },
-        {
-          "name": "3",
-          "value": this.U1caseRD
-        }
-      ]
-    },
-    {
-      "name": "RD Y GD",
-      "series": [
-        {
-          "name": "1",
-          "value": 100
-        },
-        {
-          "name": "2",
-          "value": this.U1caseRDGD
-        },
-        {
-          "name": "3",
-          "value": this.U1caseRDGD
-        }
-      ]
-    },
-    {
-      "name": "Base",
-      "series": [
-        {
-          "name": "1",
-          "value": 100
-        },
-        {
-          "name": "2",
-          "value": this.U1caseBASE
-        },
-        {
-          "name": "3",
-          "value": this.U1caseBASE
-        }
-      ]
-    }
-  ];
-*/
   constructor() {
     //Object.assign(this, this.multi);
   }
@@ -276,51 +216,9 @@ multi:Object = [
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
-/*
-  nodos:Object = [
-    {
-      "name": "Germany",
-      "series": [
-        {
-          "name": "2010",
-          "value": 7300000
-        },
-        {
-          "name": "2011",
-          "value": 8940000
-        }
-      ]
-    },
-  
-    {
-      "name": "USA",
-      "series": [
-        {
-          "name": "2010",
-          "value": 7870000
-        },
-        {
-          "name": "2011",
-          "value": 8270000
-        }
-      ]
-    },
-  
-    {
-      "name": "France",
-      "series": [
-        {
-          "name": "2010",
-          "value": 5000002
-        },
-        {
-          "name": "2011",
-          "value": 5800000
-        }
-      ]
-    }
-  ];
-*/
+
+  nodos:Object = [];
+
 
   
 }
