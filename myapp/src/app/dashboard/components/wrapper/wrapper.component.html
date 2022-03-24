@@ -7,24 +7,18 @@
       >reorder</mat-icon>
      </mat-list-item>
 
-     <mat-divider></mat-divider>
-
-     <mat-list-item [routerLink]="'Reportes'">
-      <mat-icon mat-list-icon class="">bar_chart</mat-icon>
-      <span *ngIf="expanded">Reportes</span>
-     </mat-list-item>
-
+     
    <mat-divider style="background-color:rgb(185, 211, 160);opacity:0.6;"></mat-divider>
 
      <mat-list-item [routerLink]="'Algoritmo'">
-      <mat-icon mat-list-icon class="">blur_on</mat-icon>
+      <mat-icon mat-list-icon class="" title="Algoritmo">blur_on</mat-icon>
       <span  *ngIf="expanded">Algoritmo genético</span>
      </mat-list-item>
 
      <mat-divider style="background-color:rgb(165, 202, 202);opacity:1.2;"></mat-divider>
 
      <mat-list-item [routerLink]="'Analisis'">
-      <mat-icon mat-list-icon class="">code</mat-icon>
+      <mat-icon mat-list-icon class="" title="Analisis">code</mat-icon>
       <span  *ngIf="expanded"> Análisis de vulnerabilidad</span>
      </mat-list-item>
 
@@ -32,12 +26,18 @@
 
 
      <mat-list-item [routerLink]="'Flujo'">
-      <mat-icon mat-list-icon class="">offline_bolt</mat-icon>
+      <mat-icon mat-list-icon class="" title="Flujo">offline_bolt</mat-icon>
       <span  *ngIf="expanded">Flujo optimo de potencia</span>
      </mat-list-item>
 
      <mat-divider style="background-color:rgb(228, 228, 228);opacity:1.2;"></mat-divider>
+     
 
+     <mat-list-item [routerLink]="'Reportes'">
+      <mat-icon mat-list-icon class="" title="Reportes">bar_chart</mat-icon>
+      <span *ngIf="expanded">Reportes</span>
+     </mat-list-item>
+     <mat-divider></mat-divider>
    </mat-nav-list>
   </mat-sidenav>
 <mat-sidenav-content [ngClass]="{'disabled':expanded}">
